@@ -3,6 +3,10 @@
     /* AnimeResultsView */
     /* AnimeListItems */
     --animelistitems-grd-columns: 1fr;
+
+    /* MangaResultsView */
+    /* MangaListItems */
+    --mangalistitems-grd-columns: 1fr;
   }
 }
 
@@ -11,6 +15,10 @@
     /* AnimeResultsView */
     /* AnimeListItems */
     --animelistitems-grd-columns: 1fr 1fr;
+
+    /* MangaResultsView */
+    /* MangaListItems */
+    --mangalistitems-grd-columns: 1fr 1fr;
   }
 }
 
