@@ -1,7 +1,10 @@
 <template>
   <div class="divAnimeResultsView">
     <NavbarSearchTypesComp />
-    <AnimeListComp />
+    <AnimeListComp v-if="cmpShowView"/>
+    <div class="AnimeNoResults" v-if="cmpShowNoResults">
+      <p>0 results...</p>
+    </div>
   </div>
 </template>
 
@@ -39,9 +42,19 @@ export default {
   computed: {
     ...mapGetters({
       cmpMapSearchValueText: "gettSearchValueText",
+      cmpMapAnimeSearchResults: "gettAnimeSearchResults",
     }),
     cmpNotSearchValue() {
       return this.cmpMapSearchValueText.length <= 0;
+    },
+    cmpHaveAnimeResults(){
+      return this.cmpMapAnimeSearchResults.length > 0;
+    },
+    cmpShowView(){
+      return this.cmpHaveAnimeResults === true;
+    },
+    cmpShowNoResults(){
+      return this.cmpHaveAnimeResults === false;
     },
   },
 };
@@ -56,5 +69,13 @@ export default {
   grid-template-areas: "Animes";
   grid-template-columns: 1fr;
   align-content: start;
+}
+
+.AnimeNoResults {
+  display: grid;
+  justify-content: center;
+  align-content: start;
+  padding: 50px;
+  user-select: none;
 }
 </style>
