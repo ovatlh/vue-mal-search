@@ -92,7 +92,7 @@ export default {
   z-index: 3;
   display: grid;
   grid-template-areas: "AnimeControls";
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr auto;
   grid-template-rows: 1fr;
   position: fixed;
   width: calc(100% - calc(var(--animeresultview-pdd) * 2));

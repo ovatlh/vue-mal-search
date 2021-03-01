@@ -2,12 +2,14 @@
   /* Body */
   --body-bg: #2F52A2;
   --body-clr: #ffffff;
+
   /* Navbar */
   --navbar-index: 2;
   --navbar-height: 50px;
   --navbar-bg: rgba(255,255,255,0.05);
   --navbar-box-shadow-size: 10px;
   --navbar-box-shadow-color: rgba(0,0,0,0.2);
+
   /* Views */
   --view-index: 1;
   /* SearchView */
@@ -27,6 +29,7 @@
   --searchview-manga-btn-bg: hsl(0, 40%, 50%);
   --searchview-character-btn-bg: hsl(179, 40%, 50%);
   --searchview-people-btn-bg: hsl(39, 40%, 50%);
+
   /* AnimeResultsView */
   --animeresultview-pdd: 10px;
   /* AnimeListItems */
@@ -35,6 +38,16 @@
   --animelistpages-height: 50px;
   /* AnimeListItem */
   --animelistitem-height: 200px;
+  
+  /* MangaResultsView */
+  --mangaresultview-pdd: 10px;
+  /* MangaListItems */
+  --mangalistitems-grd-columns: 1fr 1fr 1fr;
+  /* MangaListPages */
+  --mangalistpages-height: 50px;
+  /* MangaListItem */
+  --mangalistitem-height: 200px;
+
   /* App */
   --app-row-view-minheight: calc(100vh - var(--navbar-height));
 }

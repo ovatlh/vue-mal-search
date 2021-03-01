@@ -69,6 +69,7 @@ export default {
           context.dispatch("actIncrementSearchTaskFinished");
         });
     },
+    
     actAnimeResetActualPage(context) {
       context.commit("mutResetAnimeSearchActualPage");
     },

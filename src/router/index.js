@@ -28,6 +28,14 @@ const routes = [
       ),
   },
   {
+    path: "/mangas",
+    name: "Mangas",
+    component: () =>
+      import(
+        /* webpackChunkName: "chunckMangaResultsView" */ "../views/MangaResultsView.vue"
+      ),
+  },
+  {
     path: "*",
     name: "NotFound",
     component: () =>

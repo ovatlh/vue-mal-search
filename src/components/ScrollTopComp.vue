@@ -23,7 +23,7 @@ export default {
 
 <style scoped>
 .button_scrolltop {
-  grid-area: AnimeControls;
+  /* grid-area: AnimeControls; */
   display: grid;
   padding: 5px;
   margin: 5px;

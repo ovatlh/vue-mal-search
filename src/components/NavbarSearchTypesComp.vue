@@ -3,7 +3,7 @@
     <router-link class="link_animes" :to="{ name: 'Animes' }"
       >Animes</router-link
     >
-    <router-link class="link_mangas" to="/mangas">Mangas</router-link>
+    <router-link class="link_mangas" :to="{ name: 'Mangas' }">Mangas</router-link>
     <router-link class="link_characters" to="/characters"
       >Characters</router-link
     >

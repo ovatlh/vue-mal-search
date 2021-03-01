@@ -1,5 +1,5 @@
 <template>
-  <div class="divAnimeListPagesComp">
+  <div class="divMangaListPagesComp">
     <div class="navigation_button" title="First Page" @click="mthFirstPage">
       <span class="material-icons-sharp">first_page</span>
     </div>
@@ -28,7 +28,7 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 export default {
-  name: "anime-list-pages-comp",
+  name: "manga-list-pages-comp",
   props: [],
   mounted() {},
   data() {
@@ -36,36 +36,36 @@ export default {
   },
   methods: {
     ...mapActions({
-      mthAnimeFirstPage: "actAnimeFirstPage",
-      mthAnimePrevPage: "actAnimePrevPage",
-      mthAnimeNextPage: "actAnimeNextPage",
-      mthAnimeLastPage: "actAnimeLastPage",
-      mthLoadAnimePage: "actLoadAnimeSearch",
+      mthMangaFirstPage: "actMangaFirstPage",
+      mthMangaPrevPage: "actMangaPrevPage",
+      mthMangaNextPage: "actMangaNextPage",
+      mthMangaLastPage: "actMangaLastPage",
+      mthLoadMangaPage: "actLoadMangaSearch",
     }),
     mthFirstPage() {
-      this.mthAnimeFirstPage();
-      this.mthLoadAnimePage({
+      this.mthMangaFirstPage();
+      this.mthLoadMangaPage({
         num_page: this.cmpActualPage,
         value_search: this.cmpSearchValue,
       });
     },
     mthPrevPage() {
-      this.mthAnimePrevPage();
-      this.mthLoadAnimePage({
+      this.mthMangaPrevPage();
+      this.mthLoadMangaPage({
         num_page: this.cmpActualPage,
         value_search: this.cmpSearchValue,
       });
     },
     mthNextPage() {
-      this.mthAnimeNextPage();
-      this.mthLoadAnimePage({
+      this.mthMangaNextPage();
+      this.mthLoadMangaPage({
         num_page: this.cmpActualPage,
         value_search: this.cmpSearchValue,
       });
     },
     mthLastPage() {
-      this.mthAnimeLastPage();
-      this.mthLoadAnimePage({
+      this.mthMangaLastPage();
+      this.mthLoadMangaPage({
         num_page: this.cmpActualPage,
         value_search: this.cmpSearchValue,
       });
@@ -73,8 +73,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      cmpActualPage: "gettAnimeSearchActualPage",
-      cmpLastPage: "gettAnimeSearchLastPage",
+      cmpActualPage: "gettMangaSearchActualPage",
+      cmpLastPage: "gettMangaSearchLastPage",
       cmpSearchValue: "gettSearchValueText",
     }),
   },
@@ -82,15 +82,15 @@ export default {
 </script>
 
 <style scoped>
-.divAnimeListPagesComp {
-  /* grid-area: AnimeControls; */
+.divMangaListPagesComp {
+  /* grid-area: MangaControls; */
   display: grid;
   gap: 5px;
   grid-auto-flow: column;
   grid-template-rows: 1fr;
   justify-self: center;
   align-self: center;
-  /* height: var(--animelistpages-height); */
+  /* height: var(--mangalistpages-height); */
   user-select: none;
 }
 
