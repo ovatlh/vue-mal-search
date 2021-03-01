@@ -1,3 +1,35 @@
+@media screen and (min-width: 0px) and (max-width: 320px) {
+  :root {
+    /* CharacterResultsView */
+    /* CharacterListItems */
+    --characterlistitems-grd-columns: 1fr;
+  }
+}
+
+@media screen and (min-width: 321px) and (max-width: 559px) {
+  :root {
+    /* CharacterResultsView */
+    /* CharacterListItems */
+    --characterlistitems-grd-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 560px) and (max-width: 689px) {
+  :root {
+    /* CharacterResultsView */
+    /* CharacterListItems */
+    --characterlistitems-grd-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 690px) and (max-width: 1020px) {
+  :root {
+    /* CharacterResultsView */
+    /* CharacterListItems */
+    --characterlistitems-grd-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
 @media screen and (min-width: 0px) and (max-width: 767px) {
   :root {
     /* AnimeResultsView */

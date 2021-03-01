@@ -96,7 +96,8 @@ export default {
       this.$router.push({ name: "Mangas" });
     },
     mthShowCharacterResults() {
-      alert("Character: Results...");
+      // alert("Character: Results...");
+      this.$router.push({ name: "Characters" });
     },
     mthShowPeopleResults() {
       alert("People: Results...");

@@ -36,6 +36,14 @@ const routes = [
       ),
   },
   {
+    path: "/characters",
+    name: "Characters",
+    component: () =>
+      import(
+        /* webpackChunkName: "chunckCharactersResultsView" */ "../views/CharactersResultsView.vue"
+      ),
+  },
+  {
     path: "*",
     name: "NotFound",
     component: () =>

@@ -47,6 +47,15 @@
   --mangalistpages-height: 50px;
   /* MangaListItem */
   --mangalistitem-height: 200px;
+  
+  /* CharacterResultsView */
+  --characterresultview-pdd: 10px;
+  /* CharacterListItems */
+  --characterlistitems-grd-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  /* CharacterListPages */
+  --characterlistpages-height: 50px;
+  /* CharacterListItem */
+  --characterlistitem-height: 250px;
 
   /* App */
   --app-row-view-minheight: calc(100vh - var(--navbar-height));

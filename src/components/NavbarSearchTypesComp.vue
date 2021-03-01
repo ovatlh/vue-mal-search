@@ -4,7 +4,7 @@
       >Animes</router-link
     >
     <router-link class="link_mangas" :to="{ name: 'Mangas' }">Mangas</router-link>
-    <router-link class="link_characters" to="/characters"
+    <router-link class="link_characters" :to="{ name: 'Characters' }"
       >Characters</router-link
     >
     <router-link class="link_people" to="/people">People</router-link>
