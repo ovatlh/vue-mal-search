@@ -12,6 +12,7 @@ body {
   background-color: var(--body-bg);
   color: var(--body-clr);
   font-family: "Poppins";
+  overflow-x: hidden;
   overflow-y: scroll;
   display: grid;
   grid-template-areas: "Body";

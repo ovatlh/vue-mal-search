@@ -24,4 +24,12 @@ export default {
 
 <style src="@/assets/css/main-css.css"></style>
 
-<style scoped></style>
+<style scoped>
+#app {
+  display: grid;
+  grid-template-areas: "Navbar" "View";
+  grid-template-columns: 1fr;
+  grid-template-rows: var(--navbar-height) minmax(var(--app-row-view-minheight),auto);
+  align-content: start;
+}
+</style>

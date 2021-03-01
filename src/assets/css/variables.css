@@ -1,5 +1,20 @@
 :root {
   /* Body */
-  --body-bg: #000000;
+  --body-bg: #2F52A2;
   --body-clr: #ffffff;
+  /* Navbar */
+  --navbar-index: 2;
+  --navbar-height: 50px;
+  --navbar-bg: rgba(255,255,255,0.05);
+  --navbar-box-shadow-size: 10px;
+  --navbar-box-shadow-color: rgba(0,0,0,0.2);
+  /* Views */
+  --view-index: 1;
+  /* SearchView */
+  --searchview-search-input-shadow-size: 10px;
+  --searchview-search-input-shadow-color: rgba(0, 0, 0, 0.2);
+  --searchview-search-btn-shadow-size: 10px;
+  --searchview-search-btn-shadow-color: rgba(0, 0, 0, 0.2);
+  /* App */
+  --app-row-view-minheight: calc(100vh - var(--navbar-height));
 }
