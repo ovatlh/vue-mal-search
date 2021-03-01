@@ -1,10 +1,14 @@
 <template>
   <div class="divSearchView">
     <div class="search_content">
-      <h1 class="search_title">Search {{ cmpShowSearchValueTitle === true ? `(${search_value_title})` : ""}}</h1>
+      <h1 class="search_title">
+        Search
+        {{ cmpShowSearchValueTitle === true ? `(${search_value_title})` : "" }}
+      </h1>
 
       <div class="search_controls">
         <input
+          id="ctrl_value_ID"
           class="ctrl_value"
           type="search"
           placeholder="Anime/Manga/Character/People"
@@ -49,9 +53,12 @@ export default {
   props: [],
   mounted() {
     this.mthLoadSavedSearchValue();
+    document.getElementById("ctrl_value_ID").focus();
+    document.title = `${this.viewTitle}: ${this.cmpSearchValue}`;
   },
   data() {
     return {
+      viewTitle: "MAL - Search",
       search_value: "",
       search_value_title: "",
     };
@@ -69,6 +76,7 @@ export default {
     mthLoadSearchValue() {
       this.mthMapSetSearchValue(this.search_value);
       this.mthSetSearchValueTitle(this.search_value);
+      document.title = `${this.viewTitle}: ${this.cmpSearchValue}`;
     },
     mthSaveSearchValue() {
       this.mthMapSaveSearchValue(this.search_value);
@@ -80,7 +88,8 @@ export default {
       }
     },
     mthShowAnimeResults() {
-      alert("Anime: Results...");
+      // alert("Anime: Results...");
+      this.$router.push({ name: "Animes" });
     },
     mthShowMangaResults() {
       alert("Manga: Results...");
@@ -120,6 +129,7 @@ export default {
   grid-template-rows: 1fr;
   justify-items: center;
   align-items: center;
+  padding: var(--searchview-pdd);
 }
 
 .search_content {
@@ -132,8 +142,9 @@ export default {
 
 .search_title {
   grid-area: Title;
-  color: #f5f5f5;
+  color: var(--searchview-title-clr);
   justify-self: center;
+  text-align: center;
   user-select: none;
 }
 
@@ -162,22 +173,22 @@ export default {
   border: 1px solid transparent;
   user-select: none;
   cursor: pointer;
-  background-color: #e6e6e6;
-  color: #1e1e1e;
+  background-color: var(--searchview-ctrlbtn-bg);
+  color: var(--searchview-ctrlbtn-clr);
   font-weight: 600;
   box-shadow: 0 0 var(--searchview-search-btn-shadow-size) 0
     var(--searchview-search-btn-shadow-color);
 }
 
 .ctrl_button:hover {
-  border: 1px solid #000000;
+  border: 1px solid var(--searchview-ctrlbtn-brd-hover);
 }
 
 .ctrl_error {
   grid-area: Error;
   text-align: center;
   user-select: none;
-  color: #ffffff;
+  color: var(--searchview-error-clr);
 }
 
 .search_results {
@@ -208,26 +219,26 @@ export default {
   box-shadow: 0 0 var(--searchview-search-btn-shadow-size) 0
     var(--searchview-search-btn-shadow-color);
   font-weight: 600;
-  color: #f5f5f5;
+  color: var(--searchview-resultsbtns-clr);
 }
 
 .results_anime {
-  background-color: hsl(120, 40%, 50%);
+  background-color: var(--searchview-anime-btn-bg);
 }
 
 .results_manga {
-  background-color: hsl(0, 40%, 50%);
+  background-color: var(--searchview-manga-btn-bg);
 }
 
 .results_character {
-  background-color: hsl(179, 40%, 50%);
+  background-color: var(--searchview-character-btn-bg);
 }
 
 .results_people {
-  background-color: hsl(39, 40%, 50%);
+  background-color: var(--searchview-people-btn-bg);
 }
 
 .results_content button:hover {
-  border: 1px solid #ffffff;
+  border: 1px solid var(--searchview-resultsbtns-brd-hover);
 }
 </style>

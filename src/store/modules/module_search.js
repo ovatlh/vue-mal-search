@@ -36,6 +36,7 @@ export default {
         context.commit("mutResetSearchTaskFinished");
 
         // Search Anime/Manga/Character/People
+        context.dispatch("actAnimeResetActualPage");
         context.dispatch("actLoadAnimeSearch", {
           num_page: 1,
           value_search: context.state.search_value_text,

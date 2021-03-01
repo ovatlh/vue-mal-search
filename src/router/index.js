@@ -20,6 +20,14 @@ const routes = [
       ),
   },
   {
+    path: "/animes",
+    name: "Animes",
+    component: () =>
+      import(
+        /* webpackChunkName: "chunckAnimeResultsView" */ "../views/AnimeResultsView.vue"
+      ),
+  },
+  {
     path: "*",
     name: "NotFound",
     component: () =>

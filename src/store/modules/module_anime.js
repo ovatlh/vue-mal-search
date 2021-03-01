@@ -6,6 +6,7 @@ export default {
     anime_search_results: [],
     anime_search_last_page: 1,
     anime_search_actual_page: 1,
+    anime_search_loading: true,
   },
   mutations: {
     mutSaveAnimeSearchResultObj(state, paramsObj) {
@@ -14,8 +15,27 @@ export default {
     mutSaveAnimeSearchResults(state, paramsResults) {
       state.anime_search_results = paramsResults;
     },
+    mutResetAnimeSearchActualPage(state) {
+      state.anime_search_actual_page = 1;
+    },
     mutSaveAnimeSearchLastPage(state, paramsLastPage) {
       state.anime_search_last_page = paramsLastPage;
+    },
+    mutStatusAnimeSearchLoading(state, paramsStatus) {
+      state.anime_search_loading = paramsStatus;
+    },
+
+    mutAnimeFirstPage(state) {
+      state.anime_search_actual_page = 1;
+    },
+    mutAnimePrevPage(state) {
+      state.anime_search_actual_page -= 1;
+    },
+    mutAnimeNextPage(state) {
+      state.anime_search_actual_page += 1;
+    },
+    mutAnimeLastPage(state) {
+      state.anime_search_actual_page = state.anime_search_last_page;
     },
   },
   actions: {
@@ -25,6 +45,7 @@ export default {
 
       var api = `https://api.jikan.moe/v3/search/anime?q=${value_search}&page=${num_page}`;
 
+      context.commit("mutStatusAnimeSearchLoading", true);
       Vue.axios
         .get(api)
         .then((response) => {
@@ -44,8 +65,24 @@ export default {
           console.error("Data-Anime: error", error);
         })
         .finally(() => {
+          context.commit("mutStatusAnimeSearchLoading", false);
           context.dispatch("actIncrementSearchTaskFinished");
         });
+    },
+    actAnimeResetActualPage(context) {
+      context.commit("mutResetAnimeSearchActualPage");
+    },
+    actAnimeFirstPage(context) {
+      context.commit("mutAnimeFirstPage");
+    },
+    actAnimePrevPage(context) {
+      context.commit("mutAnimePrevPage");
+    },
+    actAnimeNextPage(context) {
+      context.commit("mutAnimeNextPage");
+    },
+    actAnimeLastPage(context) {
+      context.commit("mutAnimeLastPage");
     },
   },
   getters: {
@@ -57,6 +94,9 @@ export default {
     },
     gettAnimeSearchActualPage(state) {
       return state.anime_search_actual_page;
+    },
+    gettAnimeSearchLoading(state) {
+      return state.anime_search_loading;
     },
   },
 };
