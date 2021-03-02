@@ -44,6 +44,14 @@ const routes = [
       ),
   },
   {
+    path: "/people",
+    name: "People",
+    component: () =>
+      import(
+        /* webpackChunkName: "chunckPeopleResultsView" */ "../views/PeopleResultsView.vue"
+      ),
+  },
+  {
     path: "*",
     name: "NotFound",
     component: () =>

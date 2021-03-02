@@ -18,7 +18,9 @@
           v-on:keyup.enter="mthLoadSearchValue"
         />
         <button class="ctrl_button" title="Search" @click="mthLoadSearchValue">
-          Search
+          <span class="material-icons-sharp">
+            search
+          </span>
         </button>
         <p class="ctrl_error" v-if="cmpShowErrors">
           At least 3 characters are required
@@ -100,7 +102,8 @@ export default {
       this.$router.push({ name: "Characters" });
     },
     mthShowPeopleResults() {
-      alert("People: Results...");
+      // alert("People: Results...");
+      this.$router.push({ name: "People" });
     },
   },
   computed: {
@@ -167,10 +170,11 @@ export default {
   border: none;
   box-shadow: 0 0 var(--searchview-search-input-shadow-size) 0
     var(--searchview-search-input-shadow-color);
+  align-self: center;
 }
 .ctrl_button {
   grid-area: Button;
-  padding: 10px;
+  padding: 3px 5px;
   border-radius: 5px;
   border: 1px solid transparent;
   user-select: none;
@@ -180,6 +184,7 @@ export default {
   font-weight: 600;
   box-shadow: 0 0 var(--searchview-search-btn-shadow-size) 0
     var(--searchview-search-btn-shadow-color);
+  align-self: center;
 }
 
 .ctrl_button:hover {

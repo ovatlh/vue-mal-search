@@ -7,6 +7,10 @@
   --navbar-index: 2;
   --navbar-height: 50px;
   --navbar-bg: rgba(255,255,255,0.05);
+  --navbarlink-clr: #ffffff;
+  --navbarlink-bg-active: rgba(255,255,255,0.2);
+  --navbarlink-grd-gap: 10px;
+  --navbarlink-text-display: grid;
   --navbar-box-shadow-size: 10px;
   --navbar-box-shadow-color: rgba(0,0,0,0.2);
 
@@ -56,6 +60,15 @@
   --characterlistpages-height: 50px;
   /* CharacterListItem */
   --characterlistitem-height: 250px;
+  
+  /* PeopleResultsView */
+  --peopleresultview-pdd: 10px;
+  /* PeopleListItems */
+  --peoplelistitems-grd-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  /* PeopleListPages */
+  --peoplelistpages-height: 50px;
+  /* PeopleListItem */
+  --peoplelistitem-height: 250px;
 
   /* App */
   --app-row-view-minheight: calc(100vh - var(--navbar-height));

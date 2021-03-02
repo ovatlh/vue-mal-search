@@ -3,6 +3,10 @@
     /* CharacterResultsView */
     /* CharacterListItems */
     --characterlistitems-grd-columns: 1fr;
+
+    /* PeopleResultsView */
+    /* PeopleListItems */
+    --peoplelistitems-grd-columns: 1fr;
   }
 }
 
@@ -11,6 +15,10 @@
     /* CharacterResultsView */
     /* CharacterListItems */
     --characterlistitems-grd-columns: 1fr 1fr;
+
+    /* PeopleResultsView */
+    /* PeopleListItems */
+    --peoplelistitems-grd-columns: 1fr 1fr;
   }
 }
 
@@ -19,6 +27,10 @@
     /* CharacterResultsView */
     /* CharacterListItems */
     --characterlistitems-grd-columns: 1fr 1fr 1fr;
+
+    /* PeopleResultsView */
+    /* PeopleListItems */
+    --peoplelistitems-grd-columns: 1fr 1fr 1fr;
   }
 }
 
@@ -27,6 +39,10 @@
     /* CharacterResultsView */
     /* CharacterListItems */
     --characterlistitems-grd-columns: 1fr 1fr 1fr 1fr;
+
+    /* PeopleResultsView */
+    /* PeopleListItems */
+    --peoplelistitems-grd-columns: 1fr 1fr 1fr 1fr;
   }
 }
 
@@ -39,6 +55,10 @@
     /* MangaResultsView */
     /* MangaListItems */
     --mangalistitems-grd-columns: 1fr;
+
+    /* Navbar */
+    --navbarlink-grd-gap: 0px;
+    --navbarlink-text-display: none;
   }
 }
 

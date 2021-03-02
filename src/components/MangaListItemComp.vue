@@ -86,7 +86,7 @@ export default {
   justify-self: center;
   align-self: center;
 
-  filter: blur(5px) contrast(110%) brightness(50%);
+  filter: blur(5px) contrast(130%) brightness(30%);
 }
 
 .manga_item_content {

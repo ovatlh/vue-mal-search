@@ -1,11 +1,7 @@
 <template>
-  <div
-    class="divCharacterListItemComp"
-    :title="name"
-    @click="mthLoadCharacterObj"
-  >
+  <div class="divPeopleListItemComp" :title="name" @click="mthLoadPeopleObj">
     <img class="imgBG" :src="image_url" :alt="name" />
-    <div class="character_item_content">
+    <div class="people_item_content">
       <img class="imgCover" :src="image_url" :alt="name" />
       <p class="item_name">
         {{ mthMaxCharacters(name) }}{{ mthTitleNext(name) }}
@@ -16,7 +12,7 @@
 
 <script>
 export default {
-  name: "characters-list-item-comp",
+  name: "people-list-item-comp",
   props: {
     mal_id: {
       type: Number,
@@ -48,7 +44,7 @@ export default {
 
       return "";
     },
-    mthLoadCharacterObj() {
+    mthLoadPeopleObj() {
       alert(`${this.mal_id} - ${this.name}`);
     },
   },
@@ -57,23 +53,23 @@ export default {
 </script>
 
 <style scoped>
-.divCharacterListItemComp {
+.divPeopleListItemComp {
   background-color: #1e1e1e;
   user-select: none;
   cursor: pointer;
 
   display: grid;
-  grid-template-areas: "CharacterItem";
+  grid-template-areas: "PeopleItem";
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
 
   overflow: hidden;
-  height: var(--characterlistitem-height);
+  height: var(--peoplelistitem-height);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 }
 
 .imgBG {
-  grid-area: CharacterItem;
+  grid-area: PeopleItem;
   z-index: 1;
 
   object-fit: cover;
@@ -88,15 +84,15 @@ export default {
   filter: blur(5px) contrast(130%) brightness(30%);
 }
 
-.character_item_content {
-  grid-area: CharacterItem;
+.people_item_content {
+  grid-area: PeopleItem;
   z-index: 2;
 
   display: grid;
   grid-template-areas: "Cover" "Name";
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr;
-  height: var(--characterlistitem-height);
+  height: var(--peoplelistitem-height);
 }
 
 .imgCover {

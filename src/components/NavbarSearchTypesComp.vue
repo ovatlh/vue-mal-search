@@ -7,7 +7,7 @@
     <router-link class="link_characters" :to="{ name: 'Characters' }"
       >Characters</router-link
     >
-    <router-link class="link_people" to="/people">People</router-link>
+    <router-link class="link_people" :to="{ name: 'People' }">People</router-link>
   </div>
 </template>
 
