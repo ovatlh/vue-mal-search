@@ -1,8 +1,8 @@
 <template>
-  <div class="divPeopleResultsView">
+  <div class="divCharacterResultsView">
     <NavbarSearchTypesComp />
-    <PeopleListComp v-if="cmpShowView" />
-    <div class="PeopleNoResults" v-if="cmpShowNoResults">
+    <CharacterListComp v-if="cmpShowView"/>
+    <div class="CharacterNoResults" v-if="cmpShowNoResults">
       <p>0 results...</p>
     </div>
   </div>
@@ -12,14 +12,13 @@
 import { mapGetters } from "vuex";
 
 import NavbarSearchTypesComp from "@/components/NavbarSearchTypesComp.vue";
-import PeopleListComp from "@/components/PeopleListComp.vue";
-
+import CharacterListComp from "@/components/Character/CharacterListComp.vue";
 export default {
   components: {
     NavbarSearchTypesComp,
-    PeopleListComp,
+    CharacterListComp,
   },
-  name: "people-results-view",
+  name: "character-results-view",
   props: [],
   created() {
     this.mthNotSearchValue();
@@ -29,7 +28,7 @@ export default {
   },
   data() {
     return {
-      viewTitle: "MAL - People",
+      viewTitle: "MAL - Characters",
     };
   },
   methods: {
@@ -42,36 +41,36 @@ export default {
   computed: {
     ...mapGetters({
       cmpMapSearchValueText: "gettSearchValueText",
-      cmpMapPeopleSearchResults: "gettPeopleSearchResults",
+      cmpMapCharacterSearchResults: "gettCharacterSearchResults",
     }),
     cmpNotSearchValue() {
       return this.cmpMapSearchValueText.length <= 0;
     },
-    cmpHavePeopleResults() {
-      return this.cmpMapPeopleSearchResults.length > 0;
+    cmpHaveCharacterResults() {
+      return this.cmpMapCharacterSearchResults.length > 0;
     },
     cmpShowView() {
-      return this.cmpHavePeopleResults === true;
+      return this.cmpHaveCharacterResults === true;
     },
     cmpShowNoResults() {
-      return this.cmpHavePeopleResults === false;
+      return this.cmpHaveCharacterResults === false;
     },
   },
 };
 </script>
 
 <style scoped>
-.divPeopleResultsView {
+.divCharacterResultsView {
   z-index: var(--view-index);
   display: grid;
   gap: 10px;
-  padding: var(--peopleresultview-pdd);
-  grid-template-areas: "People";
+  padding: var(--characterresultview-pdd);
+  grid-template-areas: "Character";
   grid-template-columns: 1fr;
   align-content: start;
 }
 
-.PeopleNoResults {
+.CharacterNoResults {
   display: grid;
   justify-content: center;
   align-content: start;

@@ -5,7 +5,7 @@
     </h1>
 
     <div class="characterlist_items" v-if="cmpShowCharacterList">
-      <CharactersListItemComp
+      <CharacterListItemComp
         v-for="(item, index) in cmpCharacterList"
         :key="index"
         :mal_id="item.mal_id"
@@ -19,7 +19,7 @@
     </div>
 
     <div class="characterlist_controls" v-if="cmpShowCharacterList">
-      <CharactersListPagesComp />
+      <CharacterListPagesComp />
       <ScrollTopComp />
     </div>
   </div>
@@ -27,14 +27,14 @@
 
 <script>
 import { mapGetters } from "vuex";
-import CharactersListItemComp from "@/components/CharactersListItemComp.vue";
-import CharactersListPagesComp from "@/components/CharactersListPagesComp.vue";
+import CharacterListItemComp from "@/components/Character/CharacterListItemComp.vue";
+import CharacterListPagesComp from "@/components/Character/CharacterListPagesComp.vue";
 import ScrollTopComp from "@/components/ScrollTopComp.vue";
 
 export default {
   components: {
-    CharactersListItemComp,
-    CharactersListPagesComp,
+    CharacterListItemComp,
+    CharacterListPagesComp,
     ScrollTopComp,
   },
   name: "characters-list-comp",

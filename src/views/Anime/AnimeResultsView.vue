@@ -1,8 +1,8 @@
 <template>
-  <div class="divMangaResultsView">
+  <div class="divAnimeResultsView">
     <NavbarSearchTypesComp />
-    <MangaListComp v-if="cmpShowView"/>
-    <div class="MangaNoResults" v-if="cmpShowNoResults">
+    <AnimeListComp v-if="cmpShowView"/>
+    <div class="AnimeNoResults" v-if="cmpShowNoResults">
       <p>0 results...</p>
     </div>
   </div>
@@ -12,13 +12,14 @@
 import { mapGetters } from "vuex";
 
 import NavbarSearchTypesComp from "@/components/NavbarSearchTypesComp.vue";
-import MangaListComp from "@/components/MangaListComp.vue";
+import AnimeListComp from "@/components/Anime/AnimeListComp.vue";
+
 export default {
   components: {
     NavbarSearchTypesComp,
-    MangaListComp,
+    AnimeListComp,
   },
-  name: "manga-results-view",
+  name: "anime-results-view",
   props: [],
   created() {
     this.mthNotSearchValue();
@@ -28,7 +29,7 @@ export default {
   },
   data() {
     return {
-      viewTitle: "MAL - Mangas",
+      viewTitle: "MAL - Animes",
     };
   },
   methods: {
@@ -41,35 +42,36 @@ export default {
   computed: {
     ...mapGetters({
       cmpMapSearchValueText: "gettSearchValueText",
-      cmpMapMangaSearchResults: "gettMangaSearchResults",
+      cmpMapAnimeSearchResults: "gettAnimeSearchResults",
     }),
     cmpNotSearchValue() {
       return this.cmpMapSearchValueText.length <= 0;
     },
-    cmpHaveMangaResults(){
-      return this.cmpMapMangaSearchResults.length > 0;
+    cmpHaveAnimeResults(){
+      return this.cmpMapAnimeSearchResults.length > 0;
     },
     cmpShowView(){
-      return this.cmpHaveMangaResults === true;
+      return this.cmpHaveAnimeResults === true;
     },
     cmpShowNoResults(){
-      return this.cmpHaveMangaResults === false;
-    },},
+      return this.cmpHaveAnimeResults === false;
+    },
+  },
 };
 </script>
 
 <style scoped>
-.divMangaResultsView {
+.divAnimeResultsView {
   z-index: var(--view-index);
   display: grid;
   gap: 10px;
-  padding: var(--mangaresultview-pdd);
-  grid-template-areas: "Mangas";
+  padding: var(--animeresultview-pdd);
+  grid-template-areas: "Animes";
   grid-template-columns: 1fr;
   align-content: start;
 }
 
-.MangaNoResults {
+.AnimeNoResults {
   display: grid;
   justify-content: center;
   align-content: start;

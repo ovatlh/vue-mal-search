@@ -26,8 +26,8 @@
 
 <script>
 import { mapGetters } from "vuex";
-import MangaListItemComp from "@/components/MangaListItemComp.vue";
-import MangaListPagesComp from "@/components/MangaListPagesComp.vue";
+import MangaListItemComp from "@/components/Manga/MangaListItemComp.vue";
+import MangaListPagesComp from "@/components/Manga/MangaListPagesComp.vue";
 import ScrollTopComp from "@/components/ScrollTopComp.vue";
 export default {
   components: {

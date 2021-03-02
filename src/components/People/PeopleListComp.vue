@@ -25,8 +25,8 @@
 
 <script>
 import { mapGetters } from "vuex";
-import PeopleListItemComp from "@/components/PeopleListItemComp.vue";
-import PeopleListPagesComp from "@/components/PeopleListPagesComp.vue";
+import PeopleListItemComp from "@/components/People/PeopleListItemComp.vue";
+import PeopleListPagesComp from "@/components/People/PeopleListPagesComp.vue";
 import ScrollTopComp from "@/components/ScrollTopComp.vue";
 
 export default {

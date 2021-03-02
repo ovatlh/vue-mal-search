@@ -9,14 +9,14 @@ const routes = [
     alias: "/",
     name: "Home",
     component: () =>
-      import(/* webpackChunkName: "chunckHomeView" */ "../views/HomeView.vue"),
+      import(/* webpackChunkName: "chunckHomeView" */ "../views/Others/HomeView.vue"),
   },
   {
     path: "/search",
     name: "Search",
     component: () =>
       import(
-        /* webpackChunkName: "chunckSearchView" */ "../views/SearchView.vue"
+        /* webpackChunkName: "chunckSearchView" */ "../views/Others/SearchView.vue"
       ),
   },
   {
@@ -24,7 +24,7 @@ const routes = [
     name: "Animes",
     component: () =>
       import(
-        /* webpackChunkName: "chunckAnimeResultsView" */ "../views/AnimeResultsView.vue"
+        /* webpackChunkName: "chunckAnimeResultsView" */ "../views/Anime/AnimeResultsView.vue"
       ),
   },
   {
@@ -32,7 +32,7 @@ const routes = [
     name: "Mangas",
     component: () =>
       import(
-        /* webpackChunkName: "chunckMangaResultsView" */ "../views/MangaResultsView.vue"
+        /* webpackChunkName: "chunckMangaResultsView" */ "../views/Manga/MangaResultsView.vue"
       ),
   },
   {
@@ -40,7 +40,7 @@ const routes = [
     name: "Characters",
     component: () =>
       import(
-        /* webpackChunkName: "chunckCharactersResultsView" */ "../views/CharactersResultsView.vue"
+        /* webpackChunkName: "chunckCharacterResultsView" */ "../views/Character/CharacterResultsView.vue"
       ),
   },
   {
@@ -48,7 +48,7 @@ const routes = [
     name: "People",
     component: () =>
       import(
-        /* webpackChunkName: "chunckPeopleResultsView" */ "../views/PeopleResultsView.vue"
+        /* webpackChunkName: "chunckPeopleResultsView" */ "../views/People/PeopleResultsView.vue"
       ),
   },
   {
@@ -56,7 +56,7 @@ const routes = [
     name: "NotFound",
     component: () =>
       import(
-        /* webpackChunkName: "chunkNotFoundView" */ "../views/NotFoundView.vue"
+        /* webpackChunkName: "chunkNotFoundView" */ "../views/Others/NotFoundView.vue"
       ),
   },
 ];

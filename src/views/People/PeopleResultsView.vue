@@ -1,8 +1,8 @@
 <template>
-  <div class="divAnimeResultsView">
+  <div class="divPeopleResultsView">
     <NavbarSearchTypesComp />
-    <AnimeListComp v-if="cmpShowView"/>
-    <div class="AnimeNoResults" v-if="cmpShowNoResults">
+    <PeopleListComp v-if="cmpShowView" />
+    <div class="PeopleNoResults" v-if="cmpShowNoResults">
       <p>0 results...</p>
     </div>
   </div>
@@ -12,14 +12,14 @@
 import { mapGetters } from "vuex";
 
 import NavbarSearchTypesComp from "@/components/NavbarSearchTypesComp.vue";
-import AnimeListComp from "@/components/AnimeListComp.vue";
+import PeopleListComp from "@/components/People/PeopleListComp.vue";
 
 export default {
   components: {
     NavbarSearchTypesComp,
-    AnimeListComp,
+    PeopleListComp,
   },
-  name: "anime-results-view",
+  name: "people-results-view",
   props: [],
   created() {
     this.mthNotSearchValue();
@@ -29,7 +29,7 @@ export default {
   },
   data() {
     return {
-      viewTitle: "MAL - Animes",
+      viewTitle: "MAL - People",
     };
   },
   methods: {
@@ -42,36 +42,36 @@ export default {
   computed: {
     ...mapGetters({
       cmpMapSearchValueText: "gettSearchValueText",
-      cmpMapAnimeSearchResults: "gettAnimeSearchResults",
+      cmpMapPeopleSearchResults: "gettPeopleSearchResults",
     }),
     cmpNotSearchValue() {
       return this.cmpMapSearchValueText.length <= 0;
     },
-    cmpHaveAnimeResults(){
-      return this.cmpMapAnimeSearchResults.length > 0;
+    cmpHavePeopleResults() {
+      return this.cmpMapPeopleSearchResults.length > 0;
     },
-    cmpShowView(){
-      return this.cmpHaveAnimeResults === true;
+    cmpShowView() {
+      return this.cmpHavePeopleResults === true;
     },
-    cmpShowNoResults(){
-      return this.cmpHaveAnimeResults === false;
+    cmpShowNoResults() {
+      return this.cmpHavePeopleResults === false;
     },
   },
 };
 </script>
 
 <style scoped>
-.divAnimeResultsView {
+.divPeopleResultsView {
   z-index: var(--view-index);
   display: grid;
   gap: 10px;
-  padding: var(--animeresultview-pdd);
-  grid-template-areas: "Animes";
+  padding: var(--peopleresultview-pdd);
+  grid-template-areas: "People";
   grid-template-columns: 1fr;
   align-content: start;
 }
 
-.AnimeNoResults {
+.PeopleNoResults {
   display: grid;
   justify-content: center;
   align-content: start;

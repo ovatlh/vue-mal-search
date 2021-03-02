@@ -1,8 +1,8 @@
 <template>
-  <div class="divCharactersResultsView">
+  <div class="divMangaResultsView">
     <NavbarSearchTypesComp />
-    <CharactersListComp v-if="cmpShowView"/>
-    <div class="CharactersNoResults" v-if="cmpShowNoResults">
+    <MangaListComp v-if="cmpShowView"/>
+    <div class="MangaNoResults" v-if="cmpShowNoResults">
       <p>0 results...</p>
     </div>
   </div>
@@ -12,13 +12,13 @@
 import { mapGetters } from "vuex";
 
 import NavbarSearchTypesComp from "@/components/NavbarSearchTypesComp.vue";
-import CharactersListComp from "@/components/CharactersListComp.vue";
+import MangaListComp from "@/components/Manga/MangaListComp.vue";
 export default {
   components: {
     NavbarSearchTypesComp,
-    CharactersListComp,
+    MangaListComp,
   },
-  name: "characters-results-view",
+  name: "manga-results-view",
   props: [],
   created() {
     this.mthNotSearchValue();
@@ -28,7 +28,7 @@ export default {
   },
   data() {
     return {
-      viewTitle: "MAL - Characters",
+      viewTitle: "MAL - Mangas",
     };
   },
   methods: {
@@ -41,36 +41,35 @@ export default {
   computed: {
     ...mapGetters({
       cmpMapSearchValueText: "gettSearchValueText",
-      cmpMapCharacterSearchResults: "gettCharacterSearchResults",
+      cmpMapMangaSearchResults: "gettMangaSearchResults",
     }),
     cmpNotSearchValue() {
       return this.cmpMapSearchValueText.length <= 0;
     },
-    cmpHaveCharacterResults() {
-      return this.cmpMapCharacterSearchResults.length > 0;
+    cmpHaveMangaResults(){
+      return this.cmpMapMangaSearchResults.length > 0;
     },
-    cmpShowView() {
-      return this.cmpHaveCharacterResults === true;
+    cmpShowView(){
+      return this.cmpHaveMangaResults === true;
     },
-    cmpShowNoResults() {
-      return this.cmpHaveCharacterResults === false;
-    },
-  },
+    cmpShowNoResults(){
+      return this.cmpHaveMangaResults === false;
+    },},
 };
 </script>
 
 <style scoped>
-.divCharactersResultsView {
+.divMangaResultsView {
   z-index: var(--view-index);
   display: grid;
   gap: 10px;
-  padding: var(--characterresultview-pdd);
-  grid-template-areas: "Characters";
+  padding: var(--mangaresultview-pdd);
+  grid-template-areas: "Mangas";
   grid-template-columns: 1fr;
   align-content: start;
 }
 
-.CharactersNoResults {
+.MangaNoResults {
   display: grid;
   justify-content: center;
   align-content: start;

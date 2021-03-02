@@ -26,8 +26,8 @@
 
 <script>
 import { mapGetters } from "vuex";
-import AnimeListItemComp from "@/components/AnimeListItemComp.vue";
-import AnimeListPagesComp from "@/components/AnimeListPagesComp.vue";
+import AnimeListItemComp from "@/components/Anime/AnimeListItemComp.vue";
+import AnimeListPagesComp from "@/components/Anime/AnimeListPagesComp.vue";
 import ScrollTopComp from "@/components/ScrollTopComp.vue";
 
 export default {
