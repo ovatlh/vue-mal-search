@@ -50,7 +50,13 @@ export default {
       return "";
     },
     mthLoadAnimeObj() {
-      alert(`${this.mal_id} - ${this.title}`);
+      // alert(`${this.mal_id} - ${this.title}`);
+      this.$router.push({
+        name: "Anime",
+        params: {
+          mal_id: this.mal_id,
+        },
+      });
     },
   },
   computed: {},

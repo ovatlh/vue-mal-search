@@ -28,6 +28,14 @@ const routes = [
       ),
   },
   {
+    path: "/anime/:mal_id",
+    name: "Anime",
+    component: () =>
+      import(
+        /* webpackChunkName: "chunckAnimeObjView" */ "../views/Anime/AnimeObjView.vue"
+      ),
+  },
+  {
     path: "/mangas",
     name: "Mangas",
     component: () =>

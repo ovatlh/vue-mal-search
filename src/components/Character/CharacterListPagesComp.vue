@@ -28,7 +28,7 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 export default {
-  name: "characters-list-pages-comp",
+  name: "character-list-pages-comp",
   props: [],
   mounted() {},
   data() {

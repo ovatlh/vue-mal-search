@@ -42,16 +42,19 @@ export default {
           value_search: context.state.search_value_text,
         });
 
+        context.dispatch("actMangaResetActualPage");
         context.dispatch("actLoadMangaSearch", {
           num_page: 1,
           value_search: context.state.search_value_text,
         });
 
+        context.dispatch("actCharacterResetActualPage");
         context.dispatch("actLoadCharacterSearch", {
           num_page: 1,
           value_search: context.state.search_value_text,
         });
 
+        context.dispatch("actPeopleResetActualPage");
         context.dispatch("actLoadPeopleSearch", {
           num_page: 1,
           value_search: context.state.search_value_text,

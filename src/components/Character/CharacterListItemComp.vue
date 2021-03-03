@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: "characters-list-item-comp",
+  name: "character-list-item-comp",
   props: {
     mal_id: {
       type: Number,

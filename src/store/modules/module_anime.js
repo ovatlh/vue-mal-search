@@ -7,6 +7,13 @@ export default {
     anime_search_last_page: 1,
     anime_search_actual_page: 1,
     anime_search_loading: true,
+
+    anime_obj_info: {},
+    anime_obj_character_staff: {},
+    anime_list_character: [],
+    anime_list_staff: [],
+    anime_obj_loading: true,
+    anime_obj_total_finished: 0,
   },
   mutations: {
     mutSaveAnimeSearchResultObj(state, paramsObj) {
@@ -36,6 +43,28 @@ export default {
     },
     mutAnimeLastPage(state) {
       state.anime_search_actual_page = state.anime_search_last_page;
+    },
+
+    mutSaveAnimeObjInfo(state, paramsObj) {
+      state.anime_obj_info = paramsObj;
+    },
+    mutSaveAnimeObjCharacterStaffObj(state, paramsObj) {
+      state.anime_obj_character_staff = paramsObj;
+    },
+    mutSaveAnimeObjCharacterList(state, paramsList) {
+      state.anime_list_character = paramsList;
+    },
+    mutSaveAnimeObjStaffList(state, paramsList) {
+      state.anime_list_staff = paramsList;
+    },
+    mutStatusAnimeObjLoading(state, paramsStatus) {
+      state.anime_obj_loading = paramsStatus;
+    },
+    mutIncrementAnimeObjSearchTaskFinished(state) {
+      state.anime_obj_total_finished += 1;
+    },
+    mutResetAnimeObjSearchTaskFinished(state) {
+      state.anime_obj_total_finished = 0;
     },
   },
   actions: {
@@ -69,7 +98,7 @@ export default {
           context.dispatch("actIncrementSearchTaskFinished");
         });
     },
-    
+
     actAnimeResetActualPage(context) {
       context.commit("mutResetAnimeSearchActualPage");
     },
@@ -85,6 +114,50 @@ export default {
     actAnimeLastPage(context) {
       context.commit("mutAnimeLastPage");
     },
+
+    actLoadAnimeObj(context, paramsSearch) {
+      var mal_id = paramsSearch.mal_id;
+
+      var api = `https://api.jikan.moe/v3/anime/${mal_id}`;
+
+      context.commit("mutSaveAnimeObjInfo", {});
+      context.commit("mutStatusAnimeObjLoading", true);
+      context.commit("mutResetAnimeObjSearchTaskFinished");
+      
+      Vue.axios
+        .get(api)
+        .then((response) => {
+          context.commit("mutSaveAnimeObjInfo", response.data);
+        })
+        .catch((error) => {
+          console.error("Data-Anime_Obj: error", error);
+        })
+        .finally(() => {
+          // context.commit("mutStatusAnimeObjLoading", false);
+          context.commit("mutIncrementAnimeObjSearchTaskFinished");
+          context.dispatch("actLoadAnimeCharacterStaffList", paramsSearch);
+        });
+    },
+    actLoadAnimeCharacterStaffList(context, paramsSearch) {
+      var mal_id = paramsSearch.mal_id;
+
+      var api = `https://api.jikan.moe/v3/anime/${mal_id}/characters_staff`;
+
+      Vue.axios
+        .get(api)
+        .then((response) => {
+          context.commit("mutSaveAnimeObjCharacterStaffObj", response.data);
+          context.commit("mutSaveAnimeObjCharacterList", context.state.anime_obj_character_staff.characters);
+          context.commit("mutSaveAnimeObjStaffList", context.state.anime_obj_character_staff.staff);
+        })
+        .catch((error) => {
+          console.error(error);
+        })
+        .finally(() => {
+          context.commit("mutIncrementAnimeObjSearchTaskFinished");
+          context.commit("mutStatusAnimeObjLoading", false);
+        });
+    },
   },
   getters: {
     gettAnimeSearchResults(state) {
@@ -98,6 +171,22 @@ export default {
     },
     gettAnimeSearchLoading(state) {
       return state.anime_search_loading;
+    },
+
+    gettAnimeObjInfo(state) {
+      return state.anime_obj_info;
+    },
+    gettAnimeListCharacter(state) {
+      return state.anime_list_character;
+    },
+    gettAnimeListStaff(state) {
+      return state.anime_list_staff;
+    },
+    gettAnimeObjLoading(state) {
+      return state.anime_obj_loading;
+    },
+    gettAnimeObjTaskFinished(state) {
+      return state.anime_obj_total_finished;
     },
   },
 };

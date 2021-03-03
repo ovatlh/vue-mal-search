@@ -37,7 +37,7 @@ export default {
     CharacterListPagesComp,
     ScrollTopComp,
   },
-  name: "characters-list-comp",
+  name: "character-list-comp",
   props: [],
   mounted() {},
   data() {

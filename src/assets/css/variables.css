@@ -70,6 +70,13 @@
   /* PeopleListItem */
   --peoplelistitem-height: 250px;
 
+  /* AnimeObjView */
+  --animeobj-grd-areas: "Cover InfoBase";
+  --animeobj-grd-columns: auto 1fr;
+  --animeobj-div-brd-top: #ffffff;
+  --animeobj-img-cover: sticky;
+  --animeobj-related-links-clr: #ffffff;
+
   /* App */
   --app-row-view-minheight: calc(100vh - var(--navbar-height));
 }
