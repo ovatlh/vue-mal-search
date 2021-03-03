@@ -69,6 +69,7 @@
   --peoplelistpages-height: 50px;
   /* PeopleListItem */
   --peoplelistitem-height: 250px;
+  --peoplefullitem-height: 260px;
 
   /* AnimeObjView */
   --animeobj-grd-areas: "Cover InfoBase";

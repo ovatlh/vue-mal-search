@@ -89,11 +89,19 @@
           <div class="animeobj_character" v-if="cmpShowAreaCharacter">
             <h1 class="animeobj_character_title">Characters...</h1>
             <div class="animeobj_character_list">
-              <CharacterListItemComp
+              <!-- <CharacterListItemComp
                 v-for="(item, index) in cmpMapAnimeCharacterList"
                 :key="index"
                 :mal_id="item.mal_id"
                 :name="item.name"
+                :image_url="item.image_url"
+              /> -->
+              <CharacterFullItemComp
+                v-for="(item, index) in cmpMapAnimeCharacterList"
+                :key="index"
+                :mal_id="item.mal_id"
+                :name="item.name"
+                :role="item.role"
                 :image_url="item.image_url"
               />
             </div>
@@ -102,11 +110,19 @@
           <div class="animeobj_staff" v-if="cmpShowAreaStaff">
             <h1 class="animeobj_staff_title">Staff...</h1>
             <div class="animeobj_staff_list">
-              <PeopleListItemComp
+              <!-- <PeopleListItemComp
                 v-for="(item, index) in cmpMapAnimeStaffList"
                 :key="index"
                 :mal_id="item.mal_id"
                 :name="item.name"
+                :image_url="item.image_url"
+              /> -->
+              <PeopleFullItemComp
+                v-for="(item, index) in cmpMapAnimeStaffList"
+                :key="index"
+                :mal_id="item.mal_id"
+                :name="item.name"
+                :positions="item.positions"
                 :image_url="item.image_url"
               />
             </div>
@@ -125,13 +141,17 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 
-import CharacterListItemComp from "@/components/Character/CharacterListItemComp.vue";
-import PeopleListItemComp from "@/components/People/PeopleListItemComp.vue";
+// import CharacterListItemComp from "@/components/Character/CharacterListItemComp.vue";
+import CharacterFullItemComp from "@/components/Character/CharacterFullItemComp.vue";
+// import PeopleListItemComp from "@/components/People/PeopleListItemComp.vue";
+import PeopleFullItemComp from "@/components/People/PeopleFullItemComp.vue";
 import ScrollTopComp from "@/components/ScrollTopComp.vue";
 export default {
   components: {
-    CharacterListItemComp,
-    PeopleListItemComp,
+    // CharacterListItemComp,
+    CharacterFullItemComp,
+    // PeopleListItemComp,
+    PeopleFullItemComp,
     ScrollTopComp,
   },
   name: "anime-obj-view",
