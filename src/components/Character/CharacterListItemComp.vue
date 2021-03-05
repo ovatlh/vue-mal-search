@@ -49,7 +49,11 @@ export default {
       return "";
     },
     mthLoadCharacterObj() {
-      alert(`${this.mal_id} - ${this.name}`);
+      // alert(`${this.mal_id} - ${this.name}`);
+      this.$router.push({
+        name: "Character",
+        params: { mal_id: this.mal_id },
+      });
     },
   },
   computed: {},

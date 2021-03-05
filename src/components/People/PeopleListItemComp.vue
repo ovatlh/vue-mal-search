@@ -6,6 +6,9 @@
       <p class="item_name">
         {{ mthMaxCharacters(name) }}{{ mthTitleNext(name) }}
       </p>
+      <p class="item_language" v-if="language && language.length > 0">
+        {{language}}
+      </p>
     </div>
   </div>
 </template>
@@ -22,12 +25,16 @@ export default {
       type: String,
       default: "Name",
     },
+    language: {
+      type: String,
+      default: null,
+    },
     image_url: null,
   },
   mounted() {},
   data() {
     return {
-      MaxCharacters: 20,
+      MaxCharacters: 10,
     };
   },
   methods: {
@@ -89,9 +96,9 @@ export default {
   z-index: 2;
 
   display: grid;
-  grid-template-areas: "Cover" "Name";
+  grid-template-areas: "Cover" "Name" "Language";
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr 1fr auto;
   height: var(--peoplelistitem-height);
 }
 
@@ -114,7 +121,7 @@ export default {
   justify-self: center;
 }
 
-.item_name {
+.item_name, .item_language {
   font-weight: 600;
   text-align: center;
   align-self: center;

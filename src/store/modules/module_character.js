@@ -7,6 +7,12 @@ export default {
     character_search_last_page: 1,
     character_search_actual_page: 1,
     character_search_loading: true,
+
+    character_obj_info: {},
+    character_list_animeography: [],
+    character_list_mangaography: [],
+    character_list_voice_actors: [],
+    character_obj_loading: true,
   },
   mutations: {
     mutSaveCharacterSearchResultObj(state, paramsObj) {
@@ -36,6 +42,22 @@ export default {
     },
     mutCharacterLastPage(state) {
       state.character_search_actual_page = state.character_search_last_page;
+    },
+
+    mutSaveCharacterObjInfo(state, paramsObj){
+      state.character_obj_info = paramsObj;
+    },
+    mutSaveCharacterObjAnimeography(state, paramsList){
+      state.character_list_animeography = paramsList;
+    },
+    mutSaveCharacterObjMangaography(state, paramsList){
+      state.character_list_mangaography = paramsList;
+    },
+    mutSaveCharacterObjVoiceActors(state, paramsList){
+      state.character_list_voice_actors = paramsList;
+    },
+    mutStatusCharacterObjLoading(state, paramsStatus){
+      state.character_obj_loading = paramsStatus;
     },
   },
   actions: {
@@ -85,6 +107,32 @@ export default {
     actCharacterLastPage(context) {
       context.commit("mutCharacterLastPage");
     },
+
+    actLoadCharacterObj(context, paramsSearch){
+      var mal_id = paramsSearch.mal_id;
+
+      var api = `https://api.jikan.moe/v3/character/${mal_id}`;
+
+      context.commit("mutSaveCharacterObjInfo", {});
+      context.commit("mutStatusCharacterObjLoading", true);
+
+      Vue.axios
+        .get(api)
+        .then((response) => {
+          context.commit("mutSaveCharacterObjInfo", response.data);
+          context.commit("mutSaveCharacterObjAnimeography", context.state.character_obj_info.animeography);
+          context.commit("mutSaveCharacterObjMangaography", context.state.character_obj_info.mangaography);
+          context.commit("mutSaveCharacterObjVoiceActors", context.state.character_obj_info.voice_actors);
+
+          document.title = `MAL - Character: ${context.state.character_obj_info.name}`;
+        })
+        .catch((error) => {
+          console.error("Data-Character_obj: error", error);
+        })
+        .finally(() => {
+          context.commit("mutStatusCharacterObjLoading", false);
+        })
+    },
   },
   getters: {
     gettCharacterSearchResults(state) {
@@ -98,6 +146,22 @@ export default {
     },
     gettCharacterSearchLoading(state) {
       return state.character_search_loading;
+    },
+
+    gettCharacterObjInfo(state){
+      return state.character_obj_info;
+    },
+    gettCharacterListAnimeography(state){
+      return state.character_list_animeography;
+    },
+    gettCharacterListMangaography(state){
+      return state.character_list_mangaography;
+    },
+    gettCharacterListVoiceActors(state){
+      return state.character_list_voice_actors;
+    },
+    gettCharacterObjLoading(state){
+      return state.character_obj_loading;
     },
   },
 };

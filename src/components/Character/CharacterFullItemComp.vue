@@ -56,7 +56,11 @@ export default {
       return "";
     },
     mthLoadCharacterObj() {
-      alert(`${this.mal_id} - ${this.name}`);
+      // alert(`${this.mal_id} - ${this.name}`);
+      this.$router.push({
+        name: "Character",
+        params: { mal_id: this.mal_id },
+      });
     },
   },
   computed: {},
@@ -125,7 +129,8 @@ export default {
   justify-self: center;
 }
 
-.item_name, .item_role {
+.item_name,
+.item_role {
   font-weight: 600;
   text-align: center;
   align-self: center;

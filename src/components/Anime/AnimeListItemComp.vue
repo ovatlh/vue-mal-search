@@ -6,7 +6,8 @@
       <p class="item_title">
         {{ mthMaxCharacters(title) }}{{ mthTitleNext(title) }}
       </p>
-      <p class="item_type">Type: {{ type }}</p>
+      <p class="item_type" v-if="type && type.length > 0">Type: {{ type }}</p>
+      <p class="item_role" v-if="role && role.length > 0">Role: {{ role }}</p>
     </div>
   </div>
 </template>
@@ -25,14 +26,18 @@ export default {
     },
     type: {
       type: String,
-      default: "Type",
+      default: null,
+    },
+    role: {
+      type: String,
+      default: null,
     },
     image_url: null,
   },
   mounted() {},
   data() {
     return {
-      MaxCharacters: 50,
+      MaxCharacters: 30,
     };
   },
   methods: {
@@ -136,7 +141,7 @@ export default {
   font-weight: 600;
 }
 
-.item_type {
+.item_type, .item_role {
   align-self: start;
 }
 </style>
