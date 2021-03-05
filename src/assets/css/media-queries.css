@@ -69,6 +69,11 @@
     --mangaobj-grd-areas: "Cover" "InfoBase";
     --mangaobj-grd-columns: 1fr;
     --mangaobj-img-cover: initial;
+
+    /* CharacterObjView */
+    --characterobj-grd-areas: "Cover" "InfoBase";
+    --characterobj-grd-columns: 1fr;
+    --characterobj-img-cover: initial;
   }
 }
 
