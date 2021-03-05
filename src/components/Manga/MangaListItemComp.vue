@@ -50,7 +50,13 @@ export default {
       return "";
     },
     mthLoadMangaObj() {
-      alert(`${this.mal_id} - ${this.title}`);
+      // alert(`${this.mal_id} - ${this.title}`);
+      this.$router.push({
+        name: "Manga",
+        params: {
+          mal_id: this.mal_id,
+        },
+      });
     },
   },
   computed: {},

@@ -64,6 +64,11 @@
     --animeobj-grd-areas: "Cover" "InfoBase";
     --animeobj-grd-columns: 1fr;
     --animeobj-img-cover: initial;
+
+    /* MangaObjView */
+    --mangaobj-grd-areas: "Cover" "InfoBase";
+    --mangaobj-grd-columns: 1fr;
+    --mangaobj-img-cover: initial;
   }
 }
 

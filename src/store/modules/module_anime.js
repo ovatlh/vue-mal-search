@@ -128,6 +128,8 @@ export default {
         .get(api)
         .then((response) => {
           context.commit("mutSaveAnimeObjInfo", response.data);
+          
+          document.title = `MAL - Anime: ${context.state.anime_obj_info.title}`;
         })
         .catch((error) => {
           console.error("Data-Anime_Obj: error", error);

@@ -44,6 +44,14 @@ const routes = [
       ),
   },
   {
+    path: "/manga/:mal_id",
+    name: "Manga",
+    component: () =>
+      import(
+        /* webpackChunkName: "chunckMangaObjView" */ "../views/Manga/MangaObjView.vue"
+      ),
+  },
+  {
     path: "/characters",
     name: "Characters",
     component: () =>

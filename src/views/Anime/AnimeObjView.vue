@@ -14,6 +14,7 @@
 
             <div class="animeobj_info_general">
               <p class="animeobj_title" v-if="cmpMapAnimeObjInfo.title">{{ cmpMapAnimeObjInfo.title }}</p>
+              <p class="animeobj_title_synonyms" v-if="cmpMapAnimeObjInfo.title_synonyms && cmpMapAnimeObjInfo.title_synonyms.length > 0">Synonyms: <strong>{{cmpMapAnimeObjInfo.title_synonyms.join(" | ")}}</strong></p>
               <p class="animeobj_title_english" v-if="cmpMapAnimeObjInfo.title_english">
                 English: {{ cmpMapAnimeObjInfo.title_english }}
               </p>
@@ -33,7 +34,7 @@
               </p>
 
               <p v-if="cmpMapAnimeObjInfo.synopsis && cmpMapAnimeObjInfo.synopsis.length > 0">
-                <span><strong>Sinopsis: </strong></span>
+                <span><strong>Synopsis: </strong></span>
                 <span>{{cmpMapAnimeObjInfo.synopsis}}</span>
               </p>
 
@@ -50,7 +51,22 @@
               <div class="animeobj_related" v-if="cmpMapAnimeObjInfo.related">
                 <div class="related_adaptation" v-if="cmpMapAnimeObjInfo.related.Adaptation && cmpMapAnimeObjInfo.related.Adaptation.length > 0">
                   <p>Adaptation:</p>
-                  <router-link v-for="(adaptation, index) in cmpMapAnimeObjInfo.related.Adaptation" :key="index" :to="{ path: '/manga' }">> {{adaptation.name}}</router-link>
+                  <router-link v-for="(adaptation, index) in cmpMapAnimeObjInfo.related.Adaptation" :key="index" :to="{ name: 'Manga', params: { mal_id: adaptation.mal_id } }">> {{adaptation.name}}</router-link>
+                </div>
+
+                <div class="related_alternative" v-if="cmpMapAnimeObjInfo.related['Alternative version'] && cmpMapAnimeObjInfo.related['Alternative version'].length > 0">
+                  <p>Alternative version:</p>
+                  <router-link v-for="(alternative,index) in cmpMapAnimeObjInfo.related['Alternative version']" :key="index" :to="{ name: 'Manga', params: { mal_id: alternative.mal_id } }">> {{alternative.name}}</router-link>
+                </div>
+
+                <div class="related_summary" v-if="cmpMapAnimeObjInfo.related.Summary && cmpMapAnimeObjInfo.related.Summary.length > 0">
+                  <p>Summary:</p>
+                  <router-link v-for="(summary, index) in cmpMapAnimeObjInfo.related.Summary" :key="index" :to="{ name: 'Anime', params: { mal_id: summary.mal_id } }">> {{summary.name}}</router-link>
+                </div>
+
+                <div class="related_full_story" v-if="cmpMapAnimeObjInfo.related['Full story'] && cmpMapAnimeObjInfo.related['Full story'].length > 0">
+                  <p>Full story:</p>
+                  <router-link v-for="(fullstory, index) in cmpMapAnimeObjInfo.related['Full story']" :key="index" :to="{ name: 'Anime', params: { mal_id: fullstory.mal_id } }">> {{fullstory.name}}</router-link>
                 </div>
 
                 <div class="related_prequel" v-if="cmpMapAnimeObjInfo.related.Prequel && cmpMapAnimeObjInfo.related.Prequel.length > 0">
@@ -81,6 +97,11 @@
                 <div class="related_other" v-if="cmpMapAnimeObjInfo.related.Other && cmpMapAnimeObjInfo.related.Other.length > 0">
                   <p>Other:</p>
                   <router-link v-for="(other, index) in cmpMapAnimeObjInfo.related.Other" :key="index" :to="{ name: 'Anime', params: { mal_id: other.mal_id } }">> {{other.name}}</router-link>
+                </div>
+
+                <div class="related_spin_off" v-if="cmpMapAnimeObjInfo.related['Spin-off'] && cmpMapAnimeObjInfo.related['Spin-off'].length > 0">
+                  <p>Spin-off:</p>
+                  <router-link v-for="(spinoff, index) in cmpMapAnimeObjInfo.related['Spin-off']" :key="index" :to="{ name: 'Anime', params: { mal_id: spinoff.mal_id } }">> {{spinoff.name}}</router-link>
                 </div>
               </div>
             </div>
@@ -316,12 +337,12 @@ export default {
   grid-auto-flow: row;
 }
 
-.animeobj_related, .related_adaptation, .related_prequel, .related_sequel, .related_side_story, .related_parent_story, .related_character, .related_other {
+.animeobj_related, .animeobj_related > div{
   display: grid;
   grid-auto-flow: row;
 }
 
-.related_adaptation, .related_prequel, .related_sequel, .related_side_story, .related_parent_story, .related_character, .related_other {
+.animeobj_related > div{
   border-top: 4px solid var(--animeobj-div-brd-top);
   padding-top: 5px;
 }

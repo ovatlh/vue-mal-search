@@ -78,6 +78,13 @@
   --animeobj-img-cover: sticky;
   --animeobj-related-links-clr: #ffffff;
 
+  /* MangaObjView */
+  --mangaobj-grd-areas: "Cover InfoBase";
+  --mangaobj-grd-columns: auto 1fr;
+  --mangaobj-div-brd-top: #ffffff;
+  --mangaobj-img-cover: sticky;
+  --mangaobj-related-links-clr: #ffffff;
+
   /* App */
   --app-row-view-minheight: calc(100vh - var(--navbar-height));
 }

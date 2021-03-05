@@ -1,8 +1,8 @@
 <template>
   <div class="divPeopleListItemComp" :title="name" @click="mthLoadPeopleObj">
-    <img class="imgBG" :src="image_url" :alt="name" />
+    <img class="imgBG" :src="image_url ? image_url : require('@/assets/no-image.png')" :alt="name" />
     <div class="people_item_content">
-      <img class="imgCover" :src="image_url" :alt="name" />
+      <img class="imgCover" :src="image_url ? image_url : require('@/assets/no-image.png')" :alt="name" />
       <p class="item_name">
         {{ mthMaxCharacters(name) }}{{ mthTitleNext(name) }}
       </p>

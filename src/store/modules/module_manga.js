@@ -7,6 +7,13 @@ export default {
     manga_search_last_page: 1,
     manga_search_actual_page: 1,
     manga_search_loading: true,
+
+    manga_obj_info: {},
+    manga_obj_character: {},
+    manga_list_character: [],
+    manga_list_authors: [],
+    manga_obj_loading: true,
+    manga_obj_total_finished: 0,
   },
   mutations: {
     mutSaveMangaSearchResultObj(state, paramsObj) {
@@ -36,6 +43,28 @@ export default {
     },
     mutMangaLastPage(state) {
       state.manga_search_actual_page = state.manga_search_last_page;
+    },
+
+    mutSaveMangaObjInfo(state, paramsObj) {
+      state.manga_obj_info = paramsObj;
+    },
+    mutSaveMangaObjCharacterObj(state, paramsObj) {
+      state.manga_obj_character = paramsObj;
+    },
+    mutSaveMangaObjCharacterList(state, paramsList) {
+      state.manga_list_character = paramsList;
+    },
+    mutSaveMangaObjAuthorsList(state, paramsList) {
+      state.manga_list_authors = paramsList;
+    },
+    mutStatusMangaObjLoading(state, paramsStatus) {
+      state.manga_obj_loading = paramsStatus;
+    },
+    mutIncrementMangaObjSearchTaskFinished(state) {
+      state.manga_obj_total_finished += 1;
+    },
+    mutResetMangaObjSearchTaskFinished(state) {
+      state.manga_obj_total_finished = 0;
     },
   },
   actions: {
@@ -69,7 +98,7 @@ export default {
           context.dispatch("actIncrementSearchTaskFinished");
         });
     },
-    
+
     actMangaResetActualPage(context) {
       context.commit("mutResetMangaSearchActualPage");
     },
@@ -85,6 +114,57 @@ export default {
     actMangaLastPage(context) {
       context.commit("mutMangaLastPage");
     },
+
+    actLoadMangaObj(context, paramsSearch) {
+      var mal_id = paramsSearch.mal_id;
+
+      var api = `https://api.jikan.moe/v3/manga/${mal_id}`;
+
+      context.commit("mutSaveMangaObjInfo", {});
+      context.commit("mutStatusMangaObjLoading", true);
+      context.commit("mutResetMangaObjSearchTaskFinished");
+
+      Vue.axios
+        .get(api)
+        .then((response) => {
+          context.commit("mutSaveMangaObjInfo", response.data);
+          context.commit(
+            "mutSaveMangaObjAuthorsList",
+            context.state.manga_obj_info.authors
+          );
+          
+          document.title = `MAL - Manga: ${context.state.manga_obj_info.title}`;
+        })
+        .catch((error) => {
+          console.error("Data-Manga_Obj: error", error);
+        })
+        .finally(() => {
+          context.commit("mutIncrementMangaObjSearchTaskFinished");
+          context.dispatch("actLoadMangaCharacterList", paramsSearch);
+        });
+    },
+    actLoadMangaCharacterList(context, paramsSearch) {
+      var mal_id = paramsSearch.mal_id;
+
+      var api = `https://api.jikan.moe/v3/manga/${mal_id}/characters`;
+
+      Vue.axios
+        .get(api)
+        .then((response) => {
+          context.commit("mutSaveMangaObjCharacterObj", response.data);
+          context.commit(
+            "mutSaveMangaObjCharacterList",
+            context.state.manga_obj_character.characters
+          );
+        })
+        .catch((error) => {
+          console.error(error);
+        })
+        .finally(() => {
+          context.commit("mutIncrementMangaObjSearchTaskFinished");
+          context.commit("mutStatusMangaObjLoading", false);
+        });
+    },
   },
   getters: {
     gettMangaSearchResults(state) {
@@ -98,6 +178,22 @@ export default {
     },
     gettMangaSearchLoading(state) {
       return state.manga_search_loading;
+    },
+
+    gettMangaObjInfo(state) {
+      return state.manga_obj_info;
+    },
+    gettMangaCharacterList(state) {
+      return state.manga_list_character;
+    },
+    gettMangaAuthorsList(state) {
+      return state.manga_list_authors;
+    },
+    gettMangaObjLoading(state) {
+      return state.manga_obj_loading;
+    },
+    gettMangaObjTaskFinished(state) {
+      return state.manga_obj_total_finished;
     },
   },
 };
