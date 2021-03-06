@@ -74,6 +74,10 @@
     --characterobj-grd-areas: "Cover" "InfoBase";
     --characterobj-grd-columns: 1fr;
     --characterobj-img-cover: initial;
+
+    /* RolesByItemComp */
+    --rolesbyitem-grd-areas: "Item" "List";
+    --rolesbyitem-grd-columns: 1fr;
   }
 }
 

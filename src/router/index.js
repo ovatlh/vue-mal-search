@@ -76,6 +76,14 @@ const routes = [
       ),
   },
   {
+    path: "/person/:mal_id",
+    name: "Person",
+    component: () =>
+      import(
+        /* webpackChunkName: "chunckPeopleObjView" */ "../views/People/PeopleObjView.vue"
+      ),
+  },
+  {
     path: "*",
     name: "NotFound",
     component: () =>

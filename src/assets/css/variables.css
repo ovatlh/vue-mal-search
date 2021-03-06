@@ -92,6 +92,17 @@
   --characterobj-img-cover: sticky;
   --characterobj-related-links-clr: #ffffff;
 
+  /* PeopleObjView */
+  --peopleobj-grd-areas: "Cover InfoBase";
+  --peopleobj-grd-columns: auto 1fr;
+  --peopleobj-div-brd-top: #ffffff;
+  --peopleobj-img-cover: sticky;
+  --peopleobj-related-links-clr: #ffffff;
+
+  /* RolesByItemComp */
+  --rolesbyitem-grd-areas: "Item List";
+  --rolesbyitem-grd-columns: auto 1fr;
+
   /* App */
   --app-row-view-minheight: calc(100vh - var(--navbar-height));
 }

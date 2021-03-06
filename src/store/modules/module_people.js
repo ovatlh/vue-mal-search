@@ -7,6 +7,167 @@ export default {
     people_search_last_page: 1,
     people_search_actual_page: 1,
     people_search_loading: true,
+
+    people_obj_info: {},
+    people_list_roles: [],
+    people_list_roles_by_character: [
+      {
+        mal_id: 1,
+        name: "Character test - 01",
+        image_url: null,
+        animes: [
+          {
+            mal_id: 1,
+            name: "Anime test - 01",
+            image_url: null,
+            role: "Role test - 01",
+          },
+          {
+            mal_id: 2,
+            name: "Anime test - 02",
+            image_url: null,
+            role: "Role test - 02",
+          },
+          {
+            mal_id: 3,
+            name: "Anime test - 03",
+            image_url: null,
+            role: "Role test - 03",
+          },
+        ],
+      },
+      {
+        mal_id: 2,
+        name: "Character test - 02",
+        image_url: null,
+        animes: [
+          {
+            mal_id: 1,
+            name: "Anime test - 01",
+            image_url: null,
+            role: "Role test - 01",
+          },
+          {
+            mal_id: 2,
+            name: "Anime test - 02",
+            image_url: null,
+            role: "Role test - 02",
+          },
+          {
+            mal_id: 3,
+            name: "Anime test - 03",
+            image_url: null,
+            role: "Role test - 03",
+          },
+        ],
+      },
+      {
+        mal_id: 3,
+        name: "Character test - 03",
+        image_url: null,
+        animes: [
+          {
+            mal_id: 1,
+            name: "Anime test - 01",
+            image_url: null,
+            role: "Role test - 01",
+          },
+          {
+            mal_id: 2,
+            name: "Anime test - 02",
+            image_url: null,
+            role: "Role test - 02",
+          },
+          {
+            mal_id: 3,
+            name: "Anime test - 03",
+            image_url: null,
+            role: "Role test - 03",
+          },
+        ],
+      },
+    ],
+    people_list_roles_by_anime: [
+      {
+        mal_id: 1,
+        name: "Anime test - 01",
+        image_url: null,
+        characters: [
+          {
+            mal_id: 1,
+            name: "Character test - 01",
+            image_url: null,
+            role: "Role test - 01",
+          },
+          {
+            mal_id: 2,
+            name: "Character test - 02",
+            image_url: null,
+            role: "Role test - 02",
+          },
+          {
+            mal_id: 3,
+            name: "Character test - 03",
+            image_url: null,
+            role: "Role test - 03",
+          },
+        ],
+      },
+      {
+        mal_id: 2,
+        name: "Anime test - 02",
+        image_url: null,
+        characters: [
+          {
+            mal_id: 1,
+            name: "Character test - 01",
+            image_url: null,
+            role: "Role test - 01",
+          },
+          {
+            mal_id: 2,
+            name: "Character test - 02",
+            image_url: null,
+            role: "Role test - 02",
+          },
+          {
+            mal_id: 3,
+            name: "Character test - 03",
+            image_url: null,
+            role: "Role test - 03",
+          },
+        ],
+      },
+      {
+        mal_id: 3,
+        name: "Anime test - 03",
+        image_url: null,
+        characters: [
+          {
+            mal_id: 1,
+            name: "Character test - 01",
+            image_url: null,
+            role: "Role test - 01",
+          },
+          {
+            mal_id: 2,
+            name: "Character test - 02",
+            image_url: null,
+            role: "Role test - 02",
+          },
+          {
+            mal_id: 3,
+            name: "Character test - 03",
+            image_url: null,
+            role: "Role test - 03",
+          },
+        ],
+      },
+    ],
+    people_list_roles_by_selected: 0, //0: none, 1: character, 2: anime
+    people_list_published_manga: [],
+    people_list_anime_staff_positions: [],
+    people_obj_loading: true,
   },
   mutations: {
     mutSavePeopleSearchResultObj(state, paramsObj) {
@@ -69,7 +230,7 @@ export default {
           context.dispatch("actIncrementSearchTaskFinished");
         });
     },
-    
+
     actPeopleResetActualPage(context) {
       context.commit("mutResetPeopleSearchActualPage");
     },
@@ -98,6 +259,31 @@ export default {
     },
     gettPeopleSearchLoading(state) {
       return state.people_search_loading;
+    },
+
+    gettPeopleObjInfo(state) {
+      return state.people_obj_info;
+    },
+    gettPeopleObjListRoles(state) {
+      return state.people_list_roles;
+    },
+    gettPeopleObjListRolesByCharacter(state) {
+      return state.people_list_roles_by_character;
+    },
+    gettPeopleObjListRolesByAnime(state) {
+      return state.people_list_roles_by_anime;
+    },
+    gettPeopleObjListRolesBySelected(state) {
+      return state.people_list_roles_by_selected;
+    },
+    gettPeopleObjListPublishedManga(state) {
+      return state.people_list_published_manga;
+    },
+    gettPeopleObjListAnimeStaffPositions(state) {
+      return state.people_list_anime_staff_positions;
+    },
+    gettPeopleObjLoading(state) {
+      return state.people_obj_loading;
     },
   },
 };
