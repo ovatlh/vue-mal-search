@@ -164,7 +164,7 @@ export default {
         ],
       },
     ],
-    people_list_roles_by_selected: 0, //0: none, 1: character, 2: anime
+    //people_list_roles_by_selected: 0, //0: none, 1: character, 2: anime
     people_list_published_manga: [],
     people_list_anime_staff_positions: [],
     people_obj_loading: true,
@@ -197,6 +197,24 @@ export default {
     },
     mutPeopleLastPage(state) {
       state.people_search_actual_page = state.people_search_last_page;
+    },
+
+    mutSavePeopleObjInfo(state, paramsObj) {
+      state.people_obj_info = paramsObj;
+    },
+    mutSavePeopleListRoles(state, paramsList) {
+      state.people_list_roles = paramsList;
+    },
+    //Roles by character
+    //Roles by anime
+    mutSavePeopleListPublishedManga(state, paramsList) {
+      state.people_list_published_manga = paramsList;
+    },
+    mutSavePeopleListAnimeStaffPositions(state, paramsList) {
+      state.people_list_anime_staff_positions = paramsList;
+    },
+    mutStatusPeopleObjInfoLoading(state, paramsStatus) {
+      state.people_obj_loading = paramsStatus;
     },
   },
   actions: {
@@ -246,6 +264,31 @@ export default {
     actPeopleLastPage(context) {
       context.commit("mutPeopleLastPage");
     },
+
+    actLoadPeopleObj(context, paramsSearch) {
+      var mal_id = paramsSearch.mal_id;
+
+      var api = `https://api.jikan.moe/v3/person/${mal_id}`;
+
+      context.commit("mutSavePeopleObjInfo", {});
+      context.commit("mutStatusPeopleObjInfoLoading", true);
+
+      Vue.axios
+        .get(api)
+        .then((response) => {
+          console.log(response);
+          context.commit("mutSavePeopleObjInfo", response.data);
+          context.commit("mutSavePeopleListRoles", context.state.people_obj_info.voice_acting_roles);
+          context.commit("mutSavePeopleListPublishedManga", context.state.people_obj_info.published_manga);
+          context.commit("mutSavePeopleListAnimeStaffPositions", context.state.people_obj_info.anime_staff_positions);
+        })
+        .catch((error) => {
+          console.error(error);
+        })
+        .finally(() => {
+          context.commit("mutStatusPeopleObjInfoLoading", false);
+        });
+    },
   },
   getters: {
     gettPeopleSearchResults(state) {
@@ -273,9 +316,9 @@ export default {
     gettPeopleObjListRolesByAnime(state) {
       return state.people_list_roles_by_anime;
     },
-    gettPeopleObjListRolesBySelected(state) {
-      return state.people_list_roles_by_selected;
-    },
+    // gettPeopleObjListRolesBySelected(state) {
+    //   return state.people_list_roles_by_selected;
+    // },
     gettPeopleObjListPublishedManga(state) {
       return state.people_list_published_manga;
     },

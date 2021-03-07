@@ -28,8 +28,21 @@
                 }}</strong></span
               >
             </p>
-            <p v-if="cmpMapCharacterObjInfo.about && cmpMapCharacterObjInfo.about.length > 0">About:</p>
-            <p v-html="AboutWithBrTags" v-if="cmpMapCharacterObjInfo.about && cmpMapCharacterObjInfo.about.length > 0"></p>
+            <p
+              v-if="
+                cmpMapCharacterObjInfo.about &&
+                  cmpMapCharacterObjInfo.about.length > 0
+              "
+            >
+              About:
+            </p>
+            <p
+              v-html="AboutWithBrTags"
+              v-if="
+                cmpMapCharacterObjInfo.about &&
+                  cmpMapCharacterObjInfo.about.length > 0
+              "
+            ></p>
           </div>
         </div>
 
@@ -89,8 +102,8 @@
 import { mapActions, mapGetters } from "vuex";
 
 import PeopleListItemComp from "@/components/People/PeopleListItemComp.vue";
-import AnimeListItemComp from "@/components/Anime/AnimeListItemComp.vue"
-import MangaListItemComp from "@/components/Manga/MangaListItemComp.vue"
+import AnimeListItemComp from "@/components/Anime/AnimeListItemComp.vue";
+import MangaListItemComp from "@/components/Manga/MangaListItemComp.vue";
 import ScrollTopComp from "@/components/ScrollTopComp.vue";
 export default {
   components: {
@@ -179,7 +192,8 @@ export default {
   align-content: start;
 }
 
-.pCharacterObjLoading, .pCharacterObjNoData {
+.pCharacterObjLoading,
+.pCharacterObjNoData {
   justify-self: center;
   padding: 100px;
 }
@@ -272,7 +286,9 @@ export default {
   z-index: 3;
 }
 
-.characterobj_voice_actors, .characterobj_animeography, .characterobj_mangaography {
+.characterobj_voice_actors,
+.characterobj_animeography,
+.characterobj_mangaography {
   display: grid;
   gap: 10px;
   grid-auto-flow: row;
@@ -280,7 +296,9 @@ export default {
   /* background-color: rgba(0, 0, 0, 0.2); */
 }
 
-.characterobj_voice_actors_title, .characterobj_animeography_title, .characterobj_mangaography_title {
+.characterobj_voice_actors_title,
+.characterobj_animeography_title,
+.characterobj_mangaography_title {
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 2;
   position: sticky;
@@ -299,7 +317,8 @@ export default {
   grid-template-rows: auto;
 }
 
-.characterobj_animeography_list, .characterobj_mangaography_list {
+.characterobj_animeography_list,
+.characterobj_mangaography_list {
   z-index: 1;
   display: grid;
   gap: 10px;

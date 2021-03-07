@@ -75,6 +75,11 @@
     --characterobj-grd-columns: 1fr;
     --characterobj-img-cover: initial;
 
+    /* PeopleObjView */
+    --peopleobj-grd-areas: "Cover" "InfoBase";
+    --peopleobj-grd-columns: 1fr;
+    --peopleobj-img-cover: initial;
+
     /* RolesByItemComp */
     --rolesbyitem-grd-areas: "Item" "List";
     --rolesbyitem-grd-columns: 1fr;

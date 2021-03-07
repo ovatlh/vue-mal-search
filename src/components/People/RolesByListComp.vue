@@ -59,5 +59,8 @@ export default {
   position: sticky;
   left: 0;
   top: 10px;
+  padding: 0px 10px;
+  background-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
 }
 </style>
