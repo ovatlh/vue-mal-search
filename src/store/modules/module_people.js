@@ -206,7 +206,86 @@ export default {
       state.people_list_roles = paramsList;
     },
     //Roles by character
+    mutSavePeopleListRolesByCharacter(state, paramsList) {
+      var listResultCharacter = [];
+      state.people_list_roles_by_character = listResultCharacter;
+
+      paramsList.forEach(function(elemento) {
+        var _res = listResultCharacter.find(function(item) {
+          return item.mal_id === elemento.character.mal_id;
+        });
+
+        if (_res != null && _res != undefined) {
+          var _res_index = listResultCharacter.findIndex(function(item) {
+            return item.mal_id === elemento.character.mal_id;
+          });
+
+          listResultCharacter[_res_index].animes.push({
+            mal_id: elemento.anime.mal_id,
+            name: elemento.anime.name,
+            image_url: elemento.anime.image_url,
+            role: elemento.role,
+          });
+        } else {
+          listResultCharacter.push({
+            mal_id: elemento.character.mal_id,
+            name: elemento.character.name,
+            image_url: elemento.character.image_url,
+            animes: [
+              {
+                mal_id: elemento.anime.mal_id,
+                name: elemento.anime.name,
+                image_url: elemento.anime.image_url,
+                role: elemento.role,
+              },
+            ],
+          });
+        }
+      });
+
+      state.people_list_roles_by_character = listResultCharacter;
+    },
     //Roles by anime
+    mutSavePeopleListRolesByAnime(state, paramsList) {
+      var listResultAnime = [];
+      state.people_list_roles_by_anime = listResultAnime;
+
+      paramsList.forEach(function(elemento) {
+        var _res = listResultAnime.find(function(item) {
+          return item.mal_id === elemento.anime.mal_id;
+        });
+        console.log(_res);
+
+        if (_res != null && _res != undefined) {
+          var _res_index = listResultAnime.findIndex(function(item) {
+            return item.mal_id === elemento.anime.mal_id;
+          });
+
+          listResultAnime[_res_index].characters.push({
+            mal_id: elemento.character.mal_id,
+            name: elemento.character.name,
+            image_url: elemento.character.image_url,
+            role: elemento.role,
+          });
+        } else {
+          listResultAnime.push({
+            mal_id: elemento.anime.mal_id,
+            name: elemento.anime.name,
+            image_url: elemento.anime.image_url,
+            characters: [
+              {
+                mal_id: elemento.character.mal_id,
+                name: elemento.character.name,
+                image_url: elemento.character.image_url,
+                role: elemento.role,
+              },
+            ],
+          });
+        }
+      });
+
+      state.people_list_roles_by_anime = listResultAnime;
+    },
     mutSavePeopleListPublishedManga(state, paramsList) {
       state.people_list_published_manga = paramsList;
     },
@@ -276,11 +355,28 @@ export default {
       Vue.axios
         .get(api)
         .then((response) => {
-          console.log(response);
           context.commit("mutSavePeopleObjInfo", response.data);
-          context.commit("mutSavePeopleListRoles", context.state.people_obj_info.voice_acting_roles);
-          context.commit("mutSavePeopleListPublishedManga", context.state.people_obj_info.published_manga);
-          context.commit("mutSavePeopleListAnimeStaffPositions", context.state.people_obj_info.anime_staff_positions);
+          context.commit(
+            "mutSavePeopleListRoles",
+            context.state.people_obj_info.voice_acting_roles
+          );
+          context.commit(
+            "mutSavePeopleListRolesByCharacter",
+            context.state.people_obj_info.voice_acting_roles
+          );
+          context.commit(
+            "mutSavePeopleListRolesByAnime",
+            context.state.people_obj_info.voice_acting_roles
+          );
+
+          context.commit(
+            "mutSavePeopleListPublishedManga",
+            context.state.people_obj_info.published_manga
+          );
+          context.commit(
+            "mutSavePeopleListAnimeStaffPositions",
+            context.state.people_obj_info.anime_staff_positions
+          );
         })
         .catch((error) => {
           console.error(error);

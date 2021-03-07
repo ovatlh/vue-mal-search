@@ -117,13 +117,20 @@ export default {
   display: grid;
   grid-auto-flow: row;
   grid-template-areas: "Img" "Name";
-  grid-template-columns: 1fr;
+  grid-template-columns: 250px;
   grid-template-rows: 1fr auto;
+
+  align-content: center;
+  justify-content: center;
+}
+
+.rolesby_title {
+  text-align: center;
 }
 
 .imgCover {
   min-width: 100%;
-  max-width: 100%;
+  max-width: 250px;
   min-height: 250px;
   max-height: 250px;
 
@@ -156,7 +163,8 @@ export default {
 }
 
 .imgItemCover {
-  max-width: 100%;
+  min-width: 50px;
+  max-width: 50px;
   min-height: 50px;
   max-height: 50px;
   object-fit: contain;
