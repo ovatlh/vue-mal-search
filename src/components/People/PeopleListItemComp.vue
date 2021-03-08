@@ -1,13 +1,21 @@
 <template>
   <div class="divPeopleListItemComp" :title="name" @click="mthLoadPeopleObj">
-    <img class="imgBG" :src="image_url ? image_url : require('@/assets/no-image.png')" :alt="name" />
+    <img
+      class="imgBG"
+      :src="mthIsImageNull(image_url)"
+      :alt="name"
+    />
     <div class="people_item_content">
-      <img class="imgCover" :src="image_url ? image_url : require('@/assets/no-image.png')" :alt="name" />
+      <img
+        class="imgCover"
+        :src="mthIsImageNull(image_url)"
+        :alt="name"
+      />
       <p class="item_name">
         {{ mthMaxCharacters(name) }}{{ mthTitleNext(name) }}
       </p>
       <p class="item_language" v-if="language && language.length > 0">
-        {{language}}
+        {{ language }}
       </p>
     </div>
   </div>
@@ -52,7 +60,16 @@ export default {
       return "";
     },
     mthLoadPeopleObj() {
-      alert(`${this.mal_id} - ${this.name}`);
+      // alert(`${this.mal_id} - ${this.name}`);
+      this.$router.push({
+        name: "Person",
+        params: { mal_id: this.mal_id },
+      });
+    },
+    mthIsImageNull(image_url) {
+      return image_url != null && image_url.length > 0
+        ? image_url
+        : require("@/assets/no-image.png");
     },
   },
   computed: {},
@@ -121,7 +138,8 @@ export default {
   justify-self: center;
 }
 
-.item_name, .item_language {
+.item_name,
+.item_language {
   font-weight: 600;
   text-align: center;
   align-self: center;

@@ -254,7 +254,6 @@ export default {
         var _res = listResultAnime.find(function(item) {
           return item.mal_id === elemento.anime.mal_id;
         });
-        console.log(_res);
 
         if (_res != null && _res != undefined) {
           var _res_index = listResultAnime.findIndex(function(item) {
@@ -377,6 +376,8 @@ export default {
             "mutSavePeopleListAnimeStaffPositions",
             context.state.people_obj_info.anime_staff_positions
           );
+
+          document.title = `MAL - Person: ${context.state.people_obj_info.name}`;
         })
         .catch((error) => {
           console.error(error);

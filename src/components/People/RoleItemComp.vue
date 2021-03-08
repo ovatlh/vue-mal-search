@@ -7,7 +7,7 @@
     >
       <img
         class="imgAnime"
-        :src="item.anime.image_url"
+        :src="mthIsImageNull(item.anime.image_url)"
         :alt="item.anime.name"
       />
       <p class="anime_name">
@@ -24,7 +24,7 @@
     >
       <img
         class="imgCharacter"
-        :src="item.character.image_url"
+        :src="mthIsImageNull(item.character.image_url)"
         :alt="item.character.name"
       />
       <p class="character_name">
@@ -63,6 +63,11 @@ export default {
       }
 
       return "";
+    },
+    mthIsImageNull(image_url) {
+      return image_url != null && image_url.length > 0
+        ? image_url
+        : require("@/assets/no-image.png");
     },
   },
   computed: {},

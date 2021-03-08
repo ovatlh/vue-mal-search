@@ -7,7 +7,7 @@
         <div class="characterobj_info_base">
           <img
             class="characterobj_cover"
-            :src="cmpMapCharacterObjInfo.image_url"
+            :src="mthIsImageNull(cmpMapCharacterObjInfo.image_url)"
             :alt="cmpMapCharacterObjInfo.name"
             :title="cmpMapCharacterObjInfo.name"
           />
@@ -134,6 +134,11 @@ export default {
     mthLoadCharacterObj() {
       this.mthMapLoadCharacterObj({ mal_id: this.mal_id });
       window.scrollTo(0, 0);
+    },
+    mthIsImageNull(image_url) {
+      return image_url != null && image_url.length > 0
+        ? image_url
+        : require("@/assets/no-image.png");
     },
   },
   computed: {

@@ -1,8 +1,8 @@
 <template>
   <div class="divPeopleListItemComp" :title="`Name: ${name} - Positions: ${positionsFull}`" @click="mthLoadPeopleObj">
-    <img class="imgBG" :src="image_url" :alt="name" />
+    <img class="imgBG" :src="mthIsImageNull(image_url)" :alt="name" />
     <div class="people_item_content">
-      <img class="imgCover" :src="image_url" :alt="name" />
+      <img class="imgCover" :src="mthIsImageNull(image_url)" :alt="name" />
       <p class="item_name">
         {{ mthMaxCharacters(name) }}{{ mthTitleNext(name) }}
       </p>
@@ -32,7 +32,7 @@ export default {
   mounted() {},
   data() {
     return {
-      MaxCharacters: 20,
+      MaxCharacters: 15,
       positionsFull: "",
     };
   },
@@ -51,13 +51,22 @@ export default {
       return "";
     },
     mthLoadPeopleObj() {
-      alert(`${this.mal_id} - ${this.name}`);
+      // alert(`${this.mal_id} - ${this.name}`);
+      this.$router.push({
+        name: "Person",
+        params: { mal_id: this.mal_id },
+      });
     },
     mthPositionsFull(value_positions) {
       // value_positions.forEach(function(elemento) {
       //   this.positionsFull + elemento;
       // });
       this.positionsFull = value_positions.join(", ");
+    },
+    mthIsImageNull(image_url) {
+      return image_url != null && image_url.length > 0
+        ? image_url
+        : require("@/assets/no-image.png");
     },
   },
   computed: {},

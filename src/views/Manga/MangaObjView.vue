@@ -7,7 +7,7 @@
         <div class="mangaobj_info_base">
           <img
             class="mangaobj_cover"
-            :src="cmpMapMangaObjInfo.image_url"
+            :src="mthIsImageNull(cmpMapMangaObjInfo.image_url)"
             :alt="cmpMapMangaObjInfo.title"
             :title="cmpMapMangaObjInfo.title"
           />
@@ -169,6 +169,11 @@ export default {
     mthLoadMangaObj() {
       this.mthMapLoadMangaObj({ mal_id: this.mal_id });
       window.scrollTo(0, 0);
+    },
+    mthIsImageNull(image_url) {
+      return image_url != null && image_url.length > 0
+        ? image_url
+        : require("@/assets/no-image.png");
     },
   },
   computed: {

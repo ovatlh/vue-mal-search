@@ -7,7 +7,7 @@
           <div class="animeobj_info_base">
             <img
               class="animeobj_cover"
-              :src="cmpMapAnimeObjInfo.image_url"
+              :src="mthIsImageNull(cmpMapAnimeObjInfo.image_url)"
               :alt="cmpMapAnimeObjInfo.title"
               :title="cmpMapAnimeObjInfo.title"
             />
@@ -198,6 +198,11 @@ export default {
       // alert(this.mal_id);
       this.mthMapLoadAnimeObj({ mal_id: this.mal_id });
       window.scrollTo(0, 0);
+    },
+    mthIsImageNull(image_url) {
+      return image_url != null && image_url.length > 0
+        ? image_url
+        : require("@/assets/no-image.png");
     },
   },
   computed: {

@@ -4,9 +4,9 @@
     :title="`Name: ${name} - Role: ${role}`"
     @click="mthLoadCharacterObj"
   >
-    <img class="imgBG" :src="image_url" :alt="name" />
+    <img class="imgBG" :src="mthIsImageNull(image_url)" :alt="name" />
     <div class="character_item_content">
-      <img class="imgCover" :src="image_url" :alt="name" />
+      <img class="imgCover" :src="mthIsImageNull(image_url)" :alt="name" />
       <p class="item_name">
         {{ mthMaxCharacters(name) }}{{ mthTitleNext(name) }}
       </p>
@@ -61,6 +61,11 @@ export default {
         name: "Character",
         params: { mal_id: this.mal_id },
       });
+    },
+    mthIsImageNull(image_url) {
+      return image_url != null && image_url.length > 0
+        ? image_url
+        : require("@/assets/no-image.png");
     },
   },
   computed: {},

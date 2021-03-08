@@ -1,13 +1,16 @@
 <template>
   <div class="divAnimeListItemComp" :title="title" @click="mthLoadAnimeObj">
-    <img class="imgBG" :src="image_url" :alt="title" />
+    <img class="imgBG" :src="mthIsImageNull(image_url)" :alt="title" />
     <div class="anime_item_content">
-      <img class="imgCover" :src="image_url" :alt="title" />
+      <img class="imgCover" :src="mthIsImageNull(image_url)" :alt="title" />
       <p class="item_title">
         {{ mthMaxCharacters(title) }}{{ mthTitleNext(title) }}
       </p>
       <p class="item_type" v-if="type && type.length > 0">Type: {{ type }}</p>
       <p class="item_role" v-if="role && role.length > 0">Role: {{ role }}</p>
+      <p class="item_position" v-if="position && position.length > 0">
+        Position: {{ position }}
+      </p>
     </div>
   </div>
 </template>
@@ -29,6 +32,10 @@ export default {
       default: null,
     },
     role: {
+      type: String,
+      default: null,
+    },
+    position: {
       type: String,
       default: null,
     },
@@ -62,6 +69,11 @@ export default {
           mal_id: this.mal_id,
         },
       });
+    },
+    mthIsImageNull(image_url) {
+      return image_url != null && image_url.length > 0
+        ? image_url
+        : require("@/assets/no-image.png");
     },
   },
   computed: {},
@@ -141,7 +153,9 @@ export default {
   font-weight: 600;
 }
 
-.item_type, .item_role {
+.item_type,
+.item_role,
+.item_position {
   align-self: start;
 }
 </style>

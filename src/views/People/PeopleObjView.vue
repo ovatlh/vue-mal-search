@@ -7,7 +7,7 @@
         <div class="peopleobj_info_base">
           <img
             class="peopleobj_cover"
-            :src="cmpMapPeopleObjInfo.image_url"
+            :src="mthIsImageNull(cmpMapPeopleObjInfo.image_url)"
             :alt="cmpMapPeopleObjInfo.name"
             :title="cmpMapPeopleObjInfo.name"
           />
@@ -70,7 +70,17 @@
           </div>
         </div>
 
-        <div class="peopleobj_roles_list_by">
+        <PeopleMangaListComp
+          :mangas_list="cmpMapPeopleObjListPublishedManga"
+          v-if="cmpShowMangasArea"
+        />
+
+        <PeoplePositionsListComp
+          :positions_list="cmpMapPeopleObjListAnimeStaffPositions"
+          v-if="cmpShowPositionsArea"
+        />
+
+        <div class="peopleobj_roles_list_by" v-if="cmpShowRolesArea">
           <p class="roles_list_by">Roles by:</p>
           <div class="roles_by_options">
             <input type="radio" id="none" value="0" v-model="roles_type" />
@@ -82,7 +92,7 @@
           </div>
         </div>
 
-        <div class="peopleobj_roles_lists">
+        <div class="peopleobj_roles_lists" v-if="cmpShowRolesArea">
           <AllRolesListComp
             :list_items="cmpMapPeopleObjListRoles"
             v-if="cmpShowRolesNone"
@@ -114,11 +124,15 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 
+import PeopleMangaListComp from "@/components/People/PeopleMangaListComp.vue";
+import PeoplePositionsListComp from "@/components/People/PeoplePositionsListComp.vue";
 import AllRolesListComp from "@/components/People/AllRolesListComp.vue";
 import RolesByListComp from "@/components/People/RolesByListComp.vue";
 import ScrollTopComp from "@/components/ScrollTopComp.vue";
 export default {
   components: {
+    PeopleMangaListComp,
+    PeoplePositionsListComp,
     AllRolesListComp,
     RolesByListComp,
     ScrollTopComp,
@@ -147,6 +161,11 @@ export default {
       this.mthMapLoadPeopleObj({ mal_id: this.mal_id });
       window.scrollTo(0, 0);
     },
+    mthIsImageNull(image_url) {
+      return image_url != null && image_url.length > 0
+        ? image_url
+        : require("@/assets/no-image.png");
+    },
   },
   computed: {
     ...mapGetters({
@@ -157,6 +176,7 @@ export default {
       cmpMapPeopleObjInfo: "gettPeopleObjInfo",
       cmpMapPeopleObjListAnimeStaffPositions:
         "gettPeopleObjListAnimeStaffPositions",
+      cmpMapPeopleObjListPublishedManga: "gettPeopleObjListPublishedManga",
       cmpMapPeopleObjLoading: "gettPeopleObjLoading",
     }),
     cmpPeopleObjAnyData() {
@@ -201,6 +221,17 @@ export default {
     },
     cmpShowRolesByAnime() {
       return this.roles_type === "2";
+    },
+
+    cmpShowRolesArea() {
+      //cmpShowAreaRolesByNone: true: length > 0, false: length < 0
+      return this.cmpShowAreaRolesByNone === true;
+    },
+    cmpShowPositionsArea() {
+      return this.cmpMapPeopleObjListAnimeStaffPositions.length > 0;
+    },
+    cmpShowMangasArea() {
+      return this.cmpMapPeopleObjListPublishedManga.length > 0;
     },
   },
 };
