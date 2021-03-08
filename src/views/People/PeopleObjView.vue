@@ -89,6 +89,8 @@
             <label for="character">Character</label>
             <input type="radio" id="anime" value="2" v-model="roles_type" />
             <label for="anime">Anime</label>
+            <input type="radio" id="disable" value="3" v-model="roles_type" />
+            <label for="disable">Disable</label>
           </div>
         </div>
 
@@ -151,7 +153,7 @@ export default {
   data() {
     return {
       mal_id: this.$route.params.mal_id,
-      roles_type: "1", //0: none, 1: anime, 2: character
+      roles_type: "3", //0: none, 1: anime, 2: character
     };
   },
   methods: {
