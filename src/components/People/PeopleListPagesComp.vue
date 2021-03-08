@@ -50,11 +50,13 @@ export default {
       });
     },
     mthPrevPage() {
-      this.mthPeoplePrevPage();
-      this.mthLoadPeoplePage({
-        num_page: this.cmpActualPage,
-        value_search: this.cmpSearchValue,
-      });
+      if (this.cmpActualPage > 1) {
+        this.mthPeoplePrevPage();
+        this.mthLoadPeoplePage({
+          num_page: this.cmpActualPage,
+          value_search: this.cmpSearchValue,
+        });
+      }
     },
     mthNextPage() {
       this.mthPeopleNextPage();

@@ -50,11 +50,13 @@ export default {
       });
     },
     mthPrevPage() {
-      this.mthAnimePrevPage();
-      this.mthLoadAnimePage({
-        num_page: this.cmpActualPage,
-        value_search: this.cmpSearchValue,
-      });
+      if (this.cmpActualPage > 1) {
+        this.mthAnimePrevPage();
+        this.mthLoadAnimePage({
+          num_page: this.cmpActualPage,
+          value_search: this.cmpSearchValue,
+        });
+      }
     },
     mthNextPage() {
       this.mthAnimeNextPage();
