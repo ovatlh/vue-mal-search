@@ -1,16 +1,15 @@
 <template>
-  <div class="divPeopleListItemComp" :title="name" @click="mthLoadPeopleObj">
-    <img
-      class="imgBG"
-      :src="mthIsImageNull(image_url)"
-      :alt="name"
-    />
+  <router-link
+    class="divPeopleListItemComp"
+    :title="name"
+    :to="{
+      name: 'Person',
+      params: { mal_id: this.mal_id },
+    }"
+  >
+    <img class="imgBG" :src="mthIsImageNull(image_url)" :alt="name" />
     <div class="people_item_content">
-      <img
-        class="imgCover"
-        :src="mthIsImageNull(image_url)"
-        :alt="name"
-      />
+      <img class="imgCover" :src="mthIsImageNull(image_url)" :alt="name" />
       <p class="item_name">
         {{ mthMaxCharacters(name) }}{{ mthTitleNext(name) }}
       </p>
@@ -18,7 +17,7 @@
         {{ language }}
       </p>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -78,6 +77,8 @@ export default {
 
 <style scoped>
 .divPeopleListItemComp {
+  text-decoration: none;
+  color: var(--peoplelistitem-clr);
   background-color: #1e1e1e;
   user-select: none;
   cursor: pointer;

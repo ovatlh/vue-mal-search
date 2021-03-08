@@ -142,6 +142,7 @@ export default {
   name: "people-obj-view",
   beforeRouteUpdate(to, from, next) {
     this.mal_id = to.params.mal_id;
+    this.roles_type = "3";
     this.mthLoadPeopleObj();
     next();
   },

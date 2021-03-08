@@ -1,5 +1,12 @@
 <template>
-  <div class="divPeopleListItemComp" :title="`Name: ${name} - Positions: ${positionsFull}`" @click="mthLoadPeopleObj">
+  <router-link
+    class="divPeopleListItemComp"
+    :title="`Name: ${name} - Positions: ${positionsFull}`"
+    :to="{
+      name: 'Person',
+      params: { mal_id: this.mal_id },
+    }"
+  >
     <img class="imgBG" :src="mthIsImageNull(image_url)" :alt="name" />
     <div class="people_item_content">
       <img class="imgCover" :src="mthIsImageNull(image_url)" :alt="name" />
@@ -11,7 +18,7 @@
         }}{{ mthTitleNext(positions[0]) }}{{ mthPositionsFull(positions) }}
       </p>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -75,6 +82,8 @@ export default {
 
 <style scoped>
 .divPeopleListItemComp {
+  text-decoration: none;
+  color: var(--peoplefullitem-clr);
   background-color: #1e1e1e;
   user-select: none;
   cursor: pointer;

@@ -1,5 +1,14 @@
 <template>
-  <div class="divAnimeListItemComp" :title="title" @click="mthLoadAnimeObj">
+  <router-link
+    class="divAnimeListItemComp"
+    :title="title"
+    :to="{
+      name: 'Anime',
+      params: {
+        mal_id: this.mal_id,
+      },
+    }"
+  >
     <img class="imgBG" :src="mthIsImageNull(image_url)" :alt="title" />
     <div class="anime_item_content">
       <img class="imgCover" :src="mthIsImageNull(image_url)" :alt="title" />
@@ -12,7 +21,7 @@
         Position: {{ position }}
       </p>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -82,6 +91,8 @@ export default {
 
 <style scoped>
 .divAnimeListItemComp {
+  text-decoration: none;
+  color: var(--animelistitem-clr);
   background-color: #1e1e1e;
   user-select: none;
   cursor: pointer;

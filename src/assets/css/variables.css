@@ -50,6 +50,7 @@
   --animelistpages-height: 50px;
   /* AnimeListItem */
   --animelistitem-height: 200px;
+  --animelistitem-clr: #ffffff;
   
   /* MangaResultsView */
   --mangaresultview-pdd: 10px;
@@ -59,6 +60,7 @@
   --mangalistpages-height: 50px;
   /* MangaListItem */
   --mangalistitem-height: 200px;
+  --mangalistitem-clr: #ffffff;
   
   /* CharacterResultsView */
   --characterresultview-pdd: 10px;
@@ -68,6 +70,8 @@
   --characterlistpages-height: 50px;
   /* CharacterListItem */
   --characterlistitem-height: 250px;
+  --characterlistitem-clr: #ffffff;
+  --characterfullitem-clr: #ffffff;
   
   /* PeopleResultsView */
   --peopleresultview-pdd: 10px;
@@ -77,7 +81,9 @@
   --peoplelistpages-height: 50px;
   /* PeopleListItem */
   --peoplelistitem-height: 250px;
+  --peoplelistitem-clr: #ffffff;
   --peoplefullitem-height: 260px;
+  --peoplefullitem-clr: #ffffff;
 
   /* AnimeObjView */
   --animeobj-grd-areas: "Cover InfoBase";

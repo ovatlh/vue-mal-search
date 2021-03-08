@@ -1,8 +1,11 @@
 <template>
-  <div
+  <router-link
     class="divCharacterListItemComp"
     :title="name"
-    @click="mthLoadCharacterObj"
+    :to="{
+      name: 'Character',
+      params: { mal_id: this.mal_id },
+    }"
   >
     <img class="imgBG" :src="mthIsImageNull(image_url)" :alt="name" />
     <div class="character_item_content">
@@ -11,7 +14,7 @@
         {{ mthMaxCharacters(name) }}{{ mthTitleNext(name) }}
       </p>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -67,6 +70,8 @@ export default {
 
 <style scoped>
 .divCharacterListItemComp {
+  text-decoration: none;
+  color: var(--characterlistitem-clr);
   background-color: #1e1e1e;
   user-select: none;
   cursor: pointer;

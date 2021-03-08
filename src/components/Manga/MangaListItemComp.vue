@@ -1,5 +1,14 @@
 <template>
-  <div class="divMangaListItemComp" :title="title" @click="mthLoadMangaObj">
+  <router-link
+    class="divMangaListItemComp"
+    :title="title"
+    :to="{
+      name: 'Manga',
+      params: {
+        mal_id: this.mal_id,
+      },
+    }"
+  >
     <img class="imgBG" :src="mthIsImageNull(image_url)" :alt="title" />
     <div class="manga_item_content">
       <img class="imgCover" :src="mthIsImageNull(image_url)" :alt="title" />
@@ -8,9 +17,11 @@
       </p>
       <p class="item_type" v-if="type && type.length > 0">Type: {{ type }}</p>
       <p class="item_role" v-if="role && role.length > 0">Role: {{ role }}</p>
-      <p class="item_position" v-if="position && position.length > 0">Position: {{ position }}</p>
+      <p class="item_position" v-if="position && position.length > 0">
+        Position: {{ position }}
+      </p>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -80,6 +91,8 @@ export default {
 
 <style scoped>
 .divMangaListItemComp {
+  text-decoration: none;
+  color: var(--mangalistitem-clr);
   background-color: #1e1e1e;
   user-select: none;
   cursor: pointer;
