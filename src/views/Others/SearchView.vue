@@ -54,6 +54,7 @@ export default {
   name: "search-view",
   props: [],
   mounted() {
+    this.mthViewLoaded();
     this.mthLoadSavedSearchValue();
     document.getElementById("ctrl_value_ID").focus();
     document.title = `${this.viewTitle}: ${this.cmpSearchValue}`;
@@ -67,9 +68,13 @@ export default {
   },
   methods: {
     ...mapActions({
+      mthMapActSetStatusSplashScreenVisible: "actSetStatusSplashScreenVisible",
       mthMapSetSearchValue: "actSetSearchValueText",
       mthMapSaveSearchValue: "actSaveSearchValueText",
     }),
+    mthViewLoaded() {
+      this.mthMapActSetStatusSplashScreenVisible(false);
+    },
     mthSetSearchValueTitle(search_value) {
       if (this.search_value.length > 3) {
         this.search_value_title = search_value;

@@ -120,6 +120,7 @@ export default {
   },
   props: [],
   mounted() {
+    this.mthViewLoaded();
     this.mthLoadCharacterObj();
   },
   data() {
@@ -129,8 +130,12 @@ export default {
   },
   methods: {
     ...mapActions({
+      mthMapActSetStatusSplashScreenVisible: "actSetStatusSplashScreenVisible",
       mthMapLoadCharacterObj: "actLoadCharacterObj",
     }),
+    mthViewLoaded() {
+      this.mthMapActSetStatusSplashScreenVisible(false);
+    },
     mthLoadCharacterObj() {
       this.mthMapLoadCharacterObj({ mal_id: this.mal_id });
       window.scrollTo(0, 0);

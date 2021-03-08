@@ -145,6 +145,7 @@ export default {
   },
   props: [],
   mounted() {
+    this.mthViewLoaded();
     this.mthLoadPeopleObj();
   },
   data() {
@@ -155,8 +156,12 @@ export default {
   },
   methods: {
     ...mapActions({
+      mthMapActSetStatusSplashScreenVisible: "actSetStatusSplashScreenVisible",
       mthMapLoadPeopleObj: "actLoadPeopleObj",
     }),
+    mthViewLoaded() {
+      this.mthMapActSetStatusSplashScreenVisible(false);
+    },
     mthLoadPeopleObj() {
       this.mthMapLoadPeopleObj({ mal_id: this.mal_id });
       window.scrollTo(0, 0);

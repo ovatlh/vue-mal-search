@@ -1,13 +1,13 @@
 <template>
-  <div class="divHomeView">
-    <h1>Home View</h1>
+  <div class="divAboutView">
+    <h1>about-view Component</h1>
   </div>
 </template>
 
 <script>
 import { mapActions } from "vuex";
 export default {
-  name: "home-view",
+  name: "about-view",
   props: [],
   mounted() {
     this.mthViewLoaded();
@@ -27,8 +27,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.divHomeView {
-  min-height: 3000px;
-}
-</style>
+<style scoped></style>

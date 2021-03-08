@@ -155,6 +155,7 @@ export default {
   },
   props: [],
   mounted() {
+    this.mthViewLoaded();
     this.mthLoadMangaObj();
   },
   data() {
@@ -164,8 +165,12 @@ export default {
   },
   methods: {
     ...mapActions({
+      mthMapActSetStatusSplashScreenVisible: "actSetStatusSplashScreenVisible",
       mthMapLoadMangaObj: "actLoadMangaObj",
     }),
+    mthViewLoaded() {
+      this.mthMapActSetStatusSplashScreenVisible(false);
+    },
     mthLoadMangaObj() {
       this.mthMapLoadMangaObj({ mal_id: this.mal_id });
       window.scrollTo(0, 0);

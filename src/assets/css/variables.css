@@ -1,7 +1,15 @@
 :root {
   /* Body */
   --body-bg: #2F52A2;
-  --body-clr: #ffffff;
+  --body-clr: #f5f5f5;
+
+  /* SplashScreenView */
+  --ss-index: 10;
+  --ss-bg: #2F52A2;
+  --ss-clr: #ffffff;
+  --ss-animation-delay: 1s;
+  --ss-animation-duration: 1s;
+  --ss-animation-function: cubic-bezier(.34,-0.1,.99,0);
 
   /* Navbar */
   --navbar-index: 2;

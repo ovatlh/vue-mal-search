@@ -1,7 +1,7 @@
 <template>
   <div class="divMangaResultsView">
     <NavbarSearchTypesComp />
-    <MangaListComp v-if="cmpShowView"/>
+    <MangaListComp v-if="cmpShowView" />
     <div class="MangaNoResults" v-if="cmpShowNoResults">
       <p>0 results...</p>
     </div>
@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 import NavbarSearchTypesComp from "@/components/NavbarSearchTypesComp.vue";
 import MangaListComp from "@/components/Manga/MangaListComp.vue";
@@ -24,6 +24,7 @@ export default {
     this.mthNotSearchValue();
   },
   mounted() {
+    this.mthViewLoaded();
     document.title = `${this.viewTitle}: ${this.cmpMapSearchValueText}`;
   },
   data() {
@@ -32,6 +33,12 @@ export default {
     };
   },
   methods: {
+    ...mapActions({
+      mthMapActSetStatusSplashScreenVisible: "actSetStatusSplashScreenVisible",
+    }),
+    mthViewLoaded() {
+      this.mthMapActSetStatusSplashScreenVisible(false);
+    },
     mthNotSearchValue() {
       if (this.cmpNotSearchValue === true) {
         this.$router.push({ name: "Search" });
@@ -46,15 +53,16 @@ export default {
     cmpNotSearchValue() {
       return this.cmpMapSearchValueText.length <= 0;
     },
-    cmpHaveMangaResults(){
+    cmpHaveMangaResults() {
       return this.cmpMapMangaSearchResults.length > 0;
     },
-    cmpShowView(){
+    cmpShowView() {
       return this.cmpHaveMangaResults === true;
     },
-    cmpShowNoResults(){
+    cmpShowNoResults() {
       return this.cmpHaveMangaResults === false;
-    },},
+    },
+  },
 };
 </script>
 

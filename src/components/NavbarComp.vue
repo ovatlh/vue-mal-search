@@ -12,7 +12,7 @@
       </span>
       <p class="link_search_text">Search</p>
     </router-link>
-    <router-link class="link_about" to="/about" title="About">
+    <router-link class="link_about" :to="{ name: 'About' }" title="About">
       <span class="material-icons-sharp">
         info
       </span>

@@ -183,6 +183,7 @@ export default {
   },
   props: [],
   mounted() {
+    this.mthViewLoaded();
     this.mthLoadAnimeObj();
   },
   data() {
@@ -192,8 +193,12 @@ export default {
   },
   methods: {
     ...mapActions({
+      mthMapActSetStatusSplashScreenVisible: "actSetStatusSplashScreenVisible",
       mthMapLoadAnimeObj: "actLoadAnimeObj",
     }),
+    mthViewLoaded() {
+      this.mthMapActSetStatusSplashScreenVisible(false);
+    },
     mthLoadAnimeObj() {
       // alert(this.mal_id);
       this.mthMapLoadAnimeObj({ mal_id: this.mal_id });

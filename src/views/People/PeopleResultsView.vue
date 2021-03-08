@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 import NavbarSearchTypesComp from "@/components/NavbarSearchTypesComp.vue";
 import PeopleListComp from "@/components/People/PeopleListComp.vue";
@@ -25,6 +25,7 @@ export default {
     this.mthNotSearchValue();
   },
   mounted() {
+    this.mthViewLoaded();
     document.title = `${this.viewTitle}: ${this.cmpMapSearchValueText}`;
   },
   data() {
@@ -33,6 +34,12 @@ export default {
     };
   },
   methods: {
+    ...mapActions({
+      mthMapActSetStatusSplashScreenVisible: "actSetStatusSplashScreenVisible",
+    }),
+    mthViewLoaded() {
+      this.mthMapActSetStatusSplashScreenVisible(false);
+    },
     mthNotSearchValue() {
       if (this.cmpNotSearchValue === true) {
         this.$router.push({ name: "Search" });
