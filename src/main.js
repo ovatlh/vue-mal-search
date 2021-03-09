@@ -8,6 +8,10 @@ import VueAxios from "vue-axios";
 
 import SVGInject from "@iconfu/svg-inject";
 
+SVGInject.setOptions({
+  makeIdsUnique: false, // do not make ids used within the SVG unique
+});
+
 Vue.config.productionTip = false;
 
 new Vue({

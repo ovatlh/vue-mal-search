@@ -1,8 +1,8 @@
 <template>
   <div class="divSplashScreenView">
-    <div class="ss_content">
-      <img class="ss_logo" :src="imgLogo" alt="logo" title="MAL Search" />
-      <h1 class="ss_title">MyAnimeList: Searcher</h1>
+    <div class="ss_content" title="MAL Search">
+      <img class="ss_logo" :src="imgLogo" alt="logo" onload="SVGInject(this)" />
+      <h1 class="ss_title">MyAnimeList Searcher</h1>
     </div>
   </div>
 </template>
@@ -15,7 +15,7 @@ export default {
   mounted() {},
   data() {
     return {
-      imgLogo: require("@/assets/logo.png"),
+      imgLogo: require("@/assets/imgs/icons/mal-search-icon-small.svg"),
     };
   },
   methods: {},
@@ -61,15 +61,23 @@ export default {
 
 .ss_logo {
   z-index: 2;
-  min-width: 200px;
-  max-width: 200px;
+  min-width: 250px;
+  max-width: 250px;
 
-  min-height: 200px;
-  max-height: 200px;
+  min-height: 250px;
+  max-height: 250px;
 
   object-fit: contain;
   /* transition: 20s ease-out; */
 }
+
+/* svg #mal-search-icon-small #mal-icon {
+  fill: #0044ff !important;
+}
+
+svg #mal-search-icon-small #icon-search {
+  fill: #008000 !important;
+} */
 
 .ss_title {
   z-index: 1;

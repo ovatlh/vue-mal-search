@@ -339,6 +339,25 @@ export default {
 }
 
 .about_me:hover .github_pp {
-  transform: scale(1.25) rotate(15deg);
+  /* transform: scale(1.25) rotate(15deg); */
+  animation: github-pp-anim 1s ease-out infinite;
+}
+
+@keyframes github-pp-anim {
+  /* 0%, 20%{
+    transform: scale(1.25) rotate(15deg);
+  }
+  50%{
+    transform: scale(1.15) rotate(5deg);
+  }
+  80%, 100%{
+    transform: scale(1.25) rotate(-15deg);
+  } */
+  0%, 70%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  71% {
+    transform: rotate(-360deg) scale(1.25);
+  }
 }
 </style>
