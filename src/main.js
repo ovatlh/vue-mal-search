@@ -6,6 +6,8 @@ import store from "./store";
 import axios from "axios";
 import VueAxios from "vue-axios";
 
+import SVGInject from "@iconfu/svg-inject";
+
 Vue.config.productionTip = false;
 
 new Vue({
@@ -15,3 +17,4 @@ new Vue({
 }).$mount("#app");
 
 Vue.use(VueAxios, axios);
+Vue.use(SVGInject);

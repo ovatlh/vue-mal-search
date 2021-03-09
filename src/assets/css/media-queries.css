@@ -60,6 +60,9 @@
     --navbarlink-grd-gap: 0px;
     --navbarlink-text-display: none;
 
+    /* AboutView */
+    --aboutview-icons-grd-flow: row;
+
     /* AnimeObjView */
     --animeobj-grd-areas: "Cover" "InfoBase";
     --animeobj-grd-columns: 1fr;
