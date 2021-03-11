@@ -116,6 +116,10 @@
         <div class="peopleobj_btn_top">
           <ScrollTopComp />
         </div>
+
+          <a :href="`https://myanimelist.net/people/${cmpMapPeopleObjInfo.mal_id}/`" class="open_mal" target="_blank" title="Go MyAnimeList">
+            <img :src="require('@/assets/imgs/icons/mal-open-icon-small.svg')" alt="open mal">
+          </a>
       </div>
 
       <p class="pPeopleObjNoData" v-if="cmpShowNoData">No data...</p>
@@ -390,5 +394,21 @@ export default {
   right: 0;
   bottom: 0;
   padding: 10px;
+}
+
+.open_mal {
+  display: grid;
+  width: 100px;
+  justify-self: center;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+
+  transition: 0.1s ease;
+}
+
+.open_mal:hover {
+  transform: scale(1.05);
 }
 </style>
