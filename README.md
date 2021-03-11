@@ -1,3 +1,6 @@
+#MyAnimeSearcher
+![MyAnimeSearcher](https://github.com/ovatlh/vue-mal-search/blob/main/src/assets/imgs/cover.jpg)
+
 # vue-mal-search
 
 ## Project setup
