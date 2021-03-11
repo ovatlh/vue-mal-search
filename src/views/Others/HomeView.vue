@@ -9,8 +9,7 @@
 
     <div class="home_description">
       <p class="description_title">
-        Application to search for your Anime, Manga, Characters and People in
-        the anime industry.
+        Application to search for your favorite Anime, Manga, Characters and People in the anime industry.
       </p>
 
       <div class="showcase">
@@ -108,7 +107,7 @@ export default {
     return {
       svgMALSearcher: require("@/assets/imgs/icons/malsearcher-icon-large.svg"),
       timer: '',
-      showcase_num: 1,
+      showcase_num: 0,
     };
   },
   methods: {
@@ -173,7 +172,7 @@ export default {
 
 .showcase img {
   max-width: 100%;
-  max-height: 1000px;
+  max-height: calc(100vh * 2);
   object-fit: contain;
   object-position: 0 0;
   align-self: start;
