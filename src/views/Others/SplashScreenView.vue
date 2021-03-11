@@ -2,7 +2,8 @@
   <div class="divSplashScreenView">
     <div class="ss_content" title="MAL Search">
       <img class="ss_logo" :src="imgLogo" alt="logo" onload="SVGInject(this)" />
-      <h1 class="ss_title">MyAnimeList Searcher</h1>
+      <!-- <h1 class="ss_title">MyAnimeSearcher</h1> -->
+      <img class="ss_title" :src="imgLogoMALSearcher" alt="logo_masearcher" onload="SVGInject(this)" />
     </div>
   </div>
 </template>
@@ -16,6 +17,7 @@ export default {
   data() {
     return {
       imgLogo: require("@/assets/imgs/icons/mal-search-icon-small.svg"),
+      imgLogoMALSearcher: require("@/assets/imgs/icons/malsearcher-icon-large.svg"),
     };
   },
   methods: {},
@@ -85,6 +87,9 @@ svg #mal-search-icon-small #icon-search {
   text-align: center;
   color: var(--ss-clr);
   padding: 0 10px;
+
+  height: 100px;
+  fill: #ffffff;
 }
 
 .ss-leave-active .ss_content {

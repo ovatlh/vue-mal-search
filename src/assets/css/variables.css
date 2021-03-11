@@ -42,6 +42,10 @@
   --searchview-character-btn-bg: hsl(179, 40%, 50%);
   --searchview-people-btn-bg: hsl(39, 40%, 50%);
 
+  /* HomeView */
+  --homeview-pdd: 10px;
+  --homeview-grd-flow: row;
+
   /* AboutView */
   --aboutview-pdd: 10px;
   --aboutview-icons-grd-flow: column;

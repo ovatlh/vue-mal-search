@@ -1,9 +1,9 @@
 <template>
   <div class="divNavbarSearchTypesComp">
     <router-link class="link_animes" :to="{ name: 'Animes' }"
-      >Animes</router-link
+      >Anime</router-link
     >
-    <router-link class="link_mangas" :to="{ name: 'Mangas' }">Mangas</router-link>
+    <router-link class="link_mangas" :to="{ name: 'Mangas' }">Manga</router-link>
     <router-link class="link_characters" :to="{ name: 'Characters' }"
       >Characters</router-link
     >

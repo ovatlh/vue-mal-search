@@ -31,10 +31,10 @@
         <p class="results_loading" v-if="cmpResultsLoading">Loading...</p>
         <div class="results_content" v-if="cmpResultsLoaded">
           <button class="results_anime" @click="mthShowAnimeResults">
-            Animes: {{ cmpAnimeSearchResults.length }}
+            Anime: {{ cmpAnimeSearchResults.length }}
           </button>
           <button class="results_manga" @click="mthShowMangaResults">
-            Mangas: {{ cmpMangaSearchResults.length }}
+            Manga: {{ cmpMangaSearchResults.length }}
           </button>
           <button class="results_character" @click="mthShowCharacterResults">
             Characters: {{ cmpCharacterSearchResults.length }}

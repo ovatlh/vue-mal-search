@@ -5,7 +5,7 @@
      .mal{fill: #ffffff;}
      .icon{
          fill: #d2d2d2;
-         filter: drop-shadow(2px 4px 6px #0044ff);
+         filter: drop-shadow(2px 4px 6px #505050);
          }
      </style>
   </defs>
