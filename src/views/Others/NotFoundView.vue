@@ -8,7 +8,9 @@
 export default {
   name: "not-found-view",
   props: [],
-  mounted() {},
+  mounted() {
+    document.title = "MAL - 404 - Not Found";
+  },
   data() {
     return {};
   },
@@ -17,4 +19,13 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.divNotFoundView {
+  display: grid;
+  padding: 10px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  justify-items: center;
+}
+</style>
